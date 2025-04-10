@@ -90,6 +90,7 @@ if (!$userID) {
         $language = cleartext($_POST['language']);
         $date_format = cleartext($_POST['date_format']);
         $time_format = cleartext($_POST['time_format']);
+        $profile_visibility = $_POST['profile_visibility'];
         
         $id = $userID;
 
@@ -303,6 +304,7 @@ if (!$userID) {
                         about='" . $about . "',
                         date_format='" . $date_format . "',
                         time_format='" . $time_format . "',
+                        profile_visibility='" . $profile_visibility . "',
                         language='" . $language . "',
                         games='" . $home_string . "'
                     WHERE
@@ -606,6 +608,17 @@ if (!$userID) {
                 $format_time
             );
             
+            if ($ds['profile_visibility'] == "1") {
+                $profile_visibility = '<option value="1" selected="selected">' . $_language->module['yes'] .
+                    '</option><option value="2">' . $_language->module['only_registered_users'] . '</option><option value="0">' . $_language->module['no'] . '</option>';
+            } elseif($ds['profile_visibility'] == "2") {
+                $profile_visibility = '<option value="1">' . $_language->module['yes'] .
+                '</option><option value="2" selected="selected">' . $_language->module['only_registered_users'] . '</option><option value="0">' . $_language->module['no'] . '</option>';
+            } else {
+                $profile_visibility = '<option value="1">' . $_language->module['yes'] .
+                    '</option><option value="2">' . $_language->module['only_registered_users'] . '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
+            };
+            
             $birthday = date("Y-m-d", strtotime($ds[ 'birthday' ]));
             
             if (!empty($ds[ 'userpic' ])) {
@@ -733,6 +746,7 @@ if (!$userID) {
         $data_array['$format_time'] = $format_time;
         $data_array['$newsletter'] = $newsletter;
         $data_array['$games'] = $games;
+        $data_array['$profile_visibility'] = $profile_visibility;
             
         $data_array['$lang_games'] = $_language->module[ 'games' ];
         $data_array['$game_selection'] = $_language->module[ 'game_selection' ];
@@ -777,6 +791,7 @@ if (!$userID) {
         $data_array['$lang_GDPRaccept'] = $_language->module['GDPRaccept'];
         $data_array['$lang_privacy_policy'] = $_language->module['privacy_policy'];
         $data_array['$lang_discord'] = $_language->module[ 'discord' ];
+        $data_array['$profilevisibility'] = $_language->module['profile_visibility'];
 
         $template = $tpl->loadTemplate("myprofile","content_one", $data_array);
         echo $template;
