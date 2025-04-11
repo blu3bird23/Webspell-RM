@@ -1,10 +1,10 @@
 ![Demo](https://www.webspell-rm.de/includes/plugins/pic_update/images/179.png)
 >											  
->### WEBSPELL-RM - Release: 2.1.5
+>### WEBSPELL-RM - Release: 2.1.6
 >						   
->### WEBSPELL-RM - Release: 2.1.5 - https://www.webspell-rm.de
+>### WEBSPELL-RM - Release: 2.1.6 - https://www.webspell-rm.de
 >
->### WIKI WEBSPELL-RM - Release: 2.1.5 - https://www.webspell-rm.de/wiki.html
+>### WIKI WEBSPELL-RM - Release: 2.1.6 - https://www.webspell-rm.de/wiki.html
 >
 ```
 /**
