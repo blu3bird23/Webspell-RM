@@ -103,7 +103,9 @@ if(isset($_POST['submit'])) {
                 profilelast='" . $_POST[ 'lastposts' ] . "',
                 de_lang='" . isset($_POST[ 'de_lang' ]) . "',
                 en_lang='" . isset($_POST[ 'en_lang' ]) . "',
-                it_lang='" . isset($_POST[ 'it_lang' ]) . "'"
+                it_lang='" . isset($_POST[ 'it_lang' ]) . "',
+                keywords='" . $_POST[ 'keywords' ] . "',
+                description='" . $_POST[ 'description' ] . "'"
         );
         
         redirect("admincenter.php?site=settings", $_language->module[ 'updated_successfully' ], 2);
@@ -177,7 +179,7 @@ if(isset($_POST['submit'])) {
         $captcha_style
     );
 
-    $captcha_type = "<option value='0'>" . $_language->module[ 'captcha_text' ] . "</option><option value='2'>" .
+    $captcha_type = "<option value='0'>" . $_language->module[ 'captcha-text' ] . "</option><option value='2'>" .
         $_language->module[ 'captcha_autodetect' ] . "</option><option value='1'>" .
         $_language->module[ 'captcha_image' ] . "</option>";
     $captcha_type = str_replace(
@@ -240,13 +242,13 @@ if(isset($_POST['submit'])) {
 
 
 echo'<div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-house-gear"></i>
             '. $_language->module[ 'settings' ] .'
             </div>
             <div class="card-body">';    
 echo'
-    <a href="admincenter.php?site=settings" class="btn btn-primary disabled" type="button">'.$_language->module[ 'settings' ] .'</a>
-    <a href="admincenter.php?site=settings&action=social_setting" class="btn btn-primary" type="button">'.$_language->module[ 'social_settings' ] .'</a>';
+    <a href="admincenter.php?site=settings" class="btn btn-primary disabled" type="button"><i class="bi bi-gear"></i> '.$_language->module[ 'settings' ] .'</a>
+    <a href="admincenter.php?site=settings&action=social_setting" class="btn btn-primary" type="button"><i class="bi bi-gear-wide-connected"></i> '.$_language->module[ 'social_settings' ] .'</a>';
 
 
 
@@ -259,16 +261,29 @@ echo'<div class="">
     <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=settings" onsubmit="return chkFormular();">
 
         <div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-gear"></i> 
             '.$_language->module[ 'settings' ].' 
         </div>
             <div class="card-body">
        
                 <div class="row">
                     <div class="col-md-6">
+
+
+
                     <div class="mb-3 row">
                             <div class="col-md-4">
-                                '.$_language->module['page_title'].' :
+                                '.$_language->module['page_url'].' :
+                            </div>
+
+                            <div class="col-md-8">
+                                <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_1' ].'"><input class="form-control" type="url" name="url" value="'.$ds['hpurl'].'" size="35"></em></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-4">
+                                SEO & '.$_language->module['page_title'].' :
                             </div>
 
                             <div class="col-md-8">
@@ -276,35 +291,42 @@ echo'<div class="">
                             </div>
                         </div>
 
+                        
+
                         <div class="mb-3 row">
+                            <div class="col-md-4">
+                                '.$_language->module[ 'meta_keywords' ].' :
+                            </div>
+
+                            <div class="col-md-8">
+                                <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_70' ].'"><input class="form-control" type="text" name="keywords" value="'.$ds['keywords'].'" size="35"></em></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-4">
+                                '.$_language->module[ 'meta_description' ].' :
+                            </div>
+
+                            <div class="col-md-8">
+                                <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_71' ].'">
+                                <textarea class="form-control" name="description" cols="70" rows="5" placeholder="description"">'.$ds['description'].'</textarea></em></span>
+                            </div>
+                        </div>
+                    
+
+                        
+                    </div>
+
+                    <div class="col-md-6">
+
+                    <div class="mb-3 row">
                             <div class="col-md-4">
                                 '.$_language->module['clan_name'].' :
                             </div>
 
                             <div class="col-md-8">
                                 <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module['tooltip_3'].'"><input class="form-control" type="text" name="clanname" value="'.$ds['clanname'].'" size="35"></em></span>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['admin_name'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_5' ].'"><input class="form-control" type="text" name="admname" value="'.$ds['adminname'].'" size="35" ></em></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['page_url'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_1' ].'"><input class="form-control" type="url" name="url" value="'.$ds['hpurl'].'" size="35"></em></span>
                             </div>
                         </div>
 
@@ -320,35 +342,43 @@ echo'<div class="">
 
                         <div class="mb-3 row">
                             <div class="col-md-4">
+                                '.$_language->module['admin_name'].' :
+                            </div>
+
+                            <div class="col-md-8">
+                                <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_5' ].'"><input class="form-control" type="text" name="admname" value="'.$ds['adminname'].'" size="35" ></em></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-4">
                                 '.$_language->module['admin_email'].' :
                             </div>
 
                             <div class="col-md-8">
                                 <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_6' ].'"><input class="form-control" type="text" name="admmail" value="'.$ds['adminemail'].'" size="35"></em></span>
                             </div>
-                        </div>
-                    </div>
-               </div>
-</div></div>
-       
-<div class="card">
-        <div class="card-header">
-            '.$_language->module['additional_options_startpage'].' 
-        </div>
-            <div class="card-body">
-                <div class="row">
-                    
+                        </div><hr>';
 
-                    <div class="col-md-6">
-                        <div class="mb-3 row">
+                        $db = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings"));
+
+                        if($db['closed']=='1'){
+                            $lock='success';
+                            $text_lock=$_language->module['off_pagelock']; 
+                        }else{
+                            $lock='danger';
+                            $text_lock=$_language->module['on_pagelock'];   
+                        }
+
+
+                        echo'<div class="mb-3 row">
                             <div class="col-md-4">
                                 '.$_language->module['additional_options'].' :
                             </div>
 
-                            <div class="col-md-8"><a class="btn btn-danger" href="admincenter.php?site=lock">'.$_language->module['pagelock'].' </a>
+                            <div class="col-md-8"><a class="btn btn-'.$lock.'" href="admincenter.php?site=lock">'.$text_lock.' </a>
                             </div>
                         </div>
-                    </div>';
+                    ';
 
 
 
@@ -413,312 +443,250 @@ echo'<div class="">
             $widget_alle
         );
 
-echo'<div class="col-md-6">
+                echo'<div class="mb-3 row">
+                        <div class="col-md-4">
+                            '.$_language->module['startpage'].' :
+                        </div>
 
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['startpage'].' :
-                            </div>
+                        <div class="col-md-8">
+                            <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_64' ].'">
+                            <!--<input class="form-control" type="text" name="startpage" value="'.$ds['startpage'].'" size="35">-->
 
-                            <div class="col-md-8">
-                                <span class="text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_64' ].'">
-                                <!--<input class="form-control" type="text" name="startpage" value="'.$ds['startpage'].'" size="35">-->
-
-                               <!--<select id="startpage" name="startpage" class="form-select">'.$widget_startpage.'</select>-->
-                               <select class="form-select" name="startpage">'.$widget_startpage.'</select>
-                                            </em></span>
-                            </div>
+                            <!--<select id="startpage" name="startpage" class="form-select">'.$widget_startpage.'</select>-->
+                            <select class="form-select" name="startpage">'.$widget_startpage.'</select></em></span>
                         </div>
                     </div>
-</div>                
- </div>  
-   </div>  ';
-   $settings = safe_query("SELECT * FROM " . PREFIX . "settings_recaptcha");
+                </div>                        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+';
+
+
+$settings = safe_query("SELECT * FROM " . PREFIX . "settings_recaptcha");
     $dx = mysqli_fetch_array($settings);
     echo'      
       
 <div class="card">
-        <div class="card-header">
-            '.$_language->module['reCaptcha'].' 
-        </div>
-            <div class="card-body">
+    <div class="card-header"><i class="bi bi-google"></i> 
+        '.$_language->module['reCaptcha'].' 
+    </div>
+    <div class="card-body">
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3 row">
-                <label class="col-md-12">
-            '.$_language->module[ 'important_text' ].' </label></div>
-        </div>    
-
-        <div class="col-md-6">
-            <div class="mb-3 row">
-                <label class="col-md-4 control-label">'.$_language->module['web-key'].' :</label>
-                <div class="col-md-8"><span class="text-muted mdall"><em><input class="form-control" type="text" name="webkey" value="'.$dx['webkey'].'"></em></span>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="mb-3 row">
+                    <label class="col-md-12">
+                '.$_language->module[ 'important_text' ].' </label>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label class="col-md-4 control-label">'.$_language->module['secret-key'].' :</label>
-                <div class="col-md-8"><span class="text-muted mdall"><em><input class="form-control" type="text" name="seckey" value="'.$dx['seckey'].'"></em></span>
-                </div>
-            </div>
+            </div> 
 
-            <div class="mb-3 row">
-                <label class="col-md-4 control-label">'.$_language->module['activate'].' :</label>
-                <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
-                <input class="form-check-input" type="checkbox" name="onoff" value="1" '.$chk .'  >
+            <div class="col-md-4">
+                <div class="mb-3 row">
+                    <label class="col-md-12">
+                    <img src="/components/admin/images/recapcha.png" class="img-fluid" style="height:150px" alt="...">
+                    </label>
+                </div>
+            </div>    
+
+            <div class="col-md-4">
+                <div class="mb-3 row">
+                    <label class="col-md-4 control-label">'.$_language->module['web-key'].' :</label>
+                    <div class="col-md-8"><span class="text-muted mdall"><em><input class="form-control" type="text" name="webkey" value="'.$dx['webkey'].'"></em></span>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-md-4 control-label">'.$_language->module['secret-key'].' :</label>
+                    <div class="col-md-8"><span class="text-muted mdall"><em><input class="form-control" type="text" name="seckey" value="'.$dx['seckey'].'"></em></span>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label class="col-md-4 control-label">'.$_language->module['activate'].' :</label>
+                    <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
+                    <input class="form-check-input" type="checkbox" name="onoff" value="1" '.$chk .'  >
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+   
 
 
-</div></div>
 
 
-<div class="card">
-        <div class="card-header">
-            '.$_language->module['captcha'].' 
-        </div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-three-dots"></i> 
+                '.$_language->module['other'].' 
+            </div>
             <div class="card-body">
-
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module[ 'format_date' ].' :
+                            </div>
+
                             <div class="col-md-4">
-                                '.$_language->module['captcha_type'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_44' ].'"><select class="form-select" name="captcha_type">
-                                    '.$captcha_type .'
-                                </select></em></span>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['captcha_bgcol'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_45' ].'"><input class="form-control" type="text" name="captcha_bgcol" size="8" value="'.$ds['captcha_bgcol'].'"></em></span>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['captcha_fontcol'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_46' ].'"><input class="form-control" type="text" name="captcha_fontcol" size="8" value="'.$ds['captcha_fontcol'].'"></em></span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['captcha_style'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_47' ].'"><select class="form-select" name="captcha_math">
-                                    '.$captcha_style .'
-                                </select></em></span>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['captcha_noise'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_48' ].'"><input class="form-control" type="text" name="captcha_noise" size="3" value="'.$ds['captcha_noise'].'"></em></span>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-md-4">
-                                '.$_language->module['captcha_linenoise'].' :
-                            </div>
-
-                            <div class="col-md-8">
-                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_49' ].'"><input class="form-control" type="text" name="captcha_linenoise" size="3" value="'.$ds['captcha_linenoise'].'"></em></span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-</div></div></div>
-
-
-
-
-<div class="card">
-        <div class="card-header">
-            '.$_language->module['other'].' 
-        </div>
-            <div class="card-body">
-
-
-                <div class="row">
-                    <div class="col-md-6">
-                                   
-                                        
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module[ 'format_date' ].' :
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_58' ].'"><select class="form-select" name="date_format" style="text-align: right;">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_58' ].'"><select class="form-select" name="date_format"">
                                                 '.$format_date.' 
                                             </select></em></span>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
 
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module[ 'format_time' ].' :
-                                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module[ 'format_time' ].' :
+                            </div>
 
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_59' ].'"><select class="form-select" name="time_format" style="text-align: right;">
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_59' ].'"><select class="form-select" name="time_format"">
                                                 '.$format_time.' 
                                             </select></em></span>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
                                 
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module['default_language'].' :
-                                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['default_language'].' :
+                            </div>
 
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_40' ].'"><select class="form-select" name="language">
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_40' ].'"><select class="form-select" name="language">
                                                 '.$langdirs.' 
                                             </select></em></span>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
 
                                     
 
 
-                                    <div class="mb-3 row">
-                                        <div class="col-md-12">'.$_language->module['language_navi'].' </div>
-                                        </div><div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module['de_language'].' :
-                                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-12">'.$_language->module['language_navi'].' </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['de_language'].' :
+                            </div>
 
-                                        <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
-                                        <span class="text-start"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_66' ].'">'.$de_lang.'</em></span>
-                                    </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                    <div class="col-md-4">
-                                            '.$_language->module['en_language'].' :
-                                        </div>
-                                        <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
-                                        <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_67' ].'">'.$en_lang.'</em></span>
-                                        </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                    <div class="col-md-4">
-                                            '.$_language->module['it_language'].' :
-                                        </div>
-                                        <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
-                                        <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_68' ].'">'.$it_lang.'</em></span>
-                                        </div>
-                                        </div>
-
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module['login_duration'].' :
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_33' ].'"><input class="form-control" type="text" name="sessionduration" value="'.$ds['sessionduration'].'" size="3"></em></span>
-                                        </div>
-                                    </div>
-
-                                    </div>
-
-                                    <div class="col-md-6">
-
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module['profile_last_posts'].' :
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_31' ].'"><input class="form-control" type="text" name="lastposts" value="'.$ds['profilelast'].'" size="3"></em></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module['search_min_length'].' :
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_17' ].'"><input class="form-control" type="text" name="searchminlen" value="'.$ds['search_min_len'].'" size="3"></em></span>
-                                        </div>
-                                    </div>
+                            <div class="col-md-4 form-check form-switch" style="padding: 0px 43px;">
+                                <span class="text-start"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_66' ].'">'.$de_lang.'</em></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['en_language'].' :
+                            </div>
+                            <div class="col-md-4 form-check form-switch" style="padding: 0px 43px;">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_67' ].'">'.$en_lang.'</em></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['it_language'].' :
+                            </div>
+                            <div class="col-md-4 form-check form-switch" style="padding: 0px 43px;">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_68' ].'">'.$it_lang.'</em></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5" style="height:50px">
+                                            
+                            </div>
+                            <div class="col-md-7 form-check form-switch" style="padding: 0px 43px;">
+                                        
+                            </div>
+                        </div>
 
 
-
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module['max_wrong_pw'].' :
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_43' ].'"><input class="form-control" type="text" name="max_wrong_pw" value="'.$ds['max_wrong_pw'].'" size="3"></em></span>
-                                        </div>
-                                    </div>
                                     
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module[ 'register_per_ip' ].' :
-                                        </div>
 
-                                        <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
-                                            <span class="pull-left text-muted mdall">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['login_duration'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_33' ].'"><input class="form-control" type="text" name="sessionduration" value="'.$ds['sessionduration'].'" size="3"></em></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['profile_last_posts'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_31' ].'"><input class="form-control" type="text" name="lastposts" value="'.$ds['profilelast'].'" size="3"></em></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['search_min_length'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_17' ].'"><input class="form-control" type="text" name="searchminlen" value="'.$ds['search_min_len'].'" size="3"></em></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['max_wrong_pw'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_43' ].'"><input class="form-control" type="text" name="max_wrong_pw" value="'.$ds['max_wrong_pw'].'" size="3"></em></span>
+                            </div>
+                        </div>
+                            
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module[ 'register_per_ip' ].' :
+                            </div>
+
+                            <div class="col-md-4 form-check form-switch" style="padding: 0px 43px;">
+                                <span class="pull-left text-muted mdall">
                                                 <em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_63' ].'">
                                                     '.$register_per_ip.'                                              
                                                 </em>
                                             </span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <div class="col-md-4">
-                                            '.$_language->module[ 'detect_visitor_language' ].' :
-                                        </div>
-
-                                        <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
-                                            <span class="pull-left text-muted mdall">
-                                                <em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_52' ].'">
-                                                    '.$visitor_language.'                                                 
-                                                </em>
-                                            </span>
-                                        </div>
-                                    </div>';
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module[ 'detect_visitor_language' ].' :
+                            </div>
+                            <div class="col-md-4 form-check form-switch" style="padding: 0px 43px;">
+                                <span class="pull-left text-muted mdall">
+                                    <em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_52' ].'">
+                                        '.$visitor_language.'                                                 
+                                    </em>
+                                </span>
+                            </div>
+                        </div>';
                                     
                                     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"); 
                                     if(mysqli_num_rows($ergebnis) == '1') { 
 
                                     echo'<div class="mb-3 row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             '.$_language->module[ 'forum_double' ].' :
                                         </div>
 
-                                        <div class="col-md-8 form-check form-switch" style="padding: 0px 43px;">
+                                        <div class="col-md-4 form-check form-switch" style="padding: 0px 43px;">
                                             <span class="pull-left text-muted mdall">
                                                 <em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_65' ].'">
                                                     '.$forum_double.'                                              
@@ -728,21 +696,98 @@ echo'<div class="col-md-6">
                                     </div>';
                                     }
                                 echo'</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="card">
+                <div class="card-header"><i class="bi bi-badge-cc"></i> 
+                    '.$_language->module['captcha'].' 
+                </div>
+                <div class="card-body">
+
+                    <div class="alert alert-warning" role="alert">'.$_language->module['captcha-text'].'</div>
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['captcha_type'].' :
                             </div>
-                        
-                   
-                
 
-<div class="mb-3 row">
-    <div class="col-md-12"><br>
-      <input type="hidden" name="captcha_hash" value="'.$hash.'"> 
-      <button class="btn btn-warning" type="submit" name="submit">'.$_language->module['update'].' </button>
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_44' ].'"><select class="form-select" name="captcha_type">
+                                            '.$captcha_type .'
+                                        </select></em></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['captcha_bgcol'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_45' ].'"><input class="form-control" type="text" name="captcha_bgcol" size="8" value="'.$ds['captcha_bgcol'].'"></em></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['captcha_fontcol'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_46' ].'"><input class="form-control" type="text" name="captcha_fontcol" size="8" value="'.$ds['captcha_fontcol'].'"></em></span>
+                            </div>
+                        </div>
+
+                            
+
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['captcha_style'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_47' ].'"><select class="form-select" name="captcha_math">
+                                        '.$captcha_style .'
+                                    </select></em></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['captcha_noise'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_48' ].'"><input class="form-control" type="text" name="captcha_noise" size="3" value="'.$ds['captcha_noise'].'"></em></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <div class="col-md-5">
+                                '.$_language->module['captcha_linenoise'].' :
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_49' ].'"><input class="form-control" type="text" name="captcha_linenoise" size="3" value="'.$ds['captcha_linenoise'].'"></em></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-md-12"><br>
+                <input type="hidden" name="captcha_hash" value="'.$hash.'"> 
+                <button class="btn btn-warning" type="submit" name="submit"><i class="bi bi-box-arrow-down"></i> '.$_language->module['update'].' </button>
+            </div>
+        </div>
+
     </div>
-  </div>
 
-</div>
-
- </div></form>';
+</div></form>';
 
 }
 
@@ -800,12 +845,12 @@ if (isset($_POST[ "saveedit" ])) {
 } else {
 
     echo'<div class="card">
-            <div class="card-header">
+            <div class="card-header"><i class="bi bi-gear-wide-connected"></i>
                 '. $_language->module[ 'social_settings' ] .'
                 </div>
             <div class="card-body">';    
 echo'
-    <a href="admincenter.php?site=settings" class="btn btn-primary" type="button">'.$_language->module[ 'settings' ] .'</a>
+    <a href="admincenter.php?site=settings" class="btn btn-primary" type="button"><i class="bi bi-house-gear"></i> '.$_language->module[ 'settings' ] .'</a>
     <a href="admincenter.php?site=settings&action=social_setting" class="btn btn-primary disabled" type="button">'.$_language->module[ 'social_settings' ] .'</a>';
 
   $ds =
@@ -817,17 +862,17 @@ echo'
     $hash = $CAPCLASS->getHash();
     
     
-    echo '<div class="card">
-        <div class="card-header">
+echo '<div class="card">
+        <div class="card-header"><i class="bi bi-gear-wide-connected"></i> 
             '. $_language->module[ 'title_social_media' ] .'
         </div>
-            <div class="card-body">
+        <div class="card-body">
 
             <form action="admincenter.php?site=settings&action=social_setting" method="post" name="post" role="form"
             class="form-horizontal">
 
 
-<div class="mb-3 row">
+            <div class="mb-3 row">
                 <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-clock"></i>&nbsp;Since:</label>
 
                 <div class="col-xs-12 col-md-10">
@@ -836,7 +881,7 @@ echo'
                 </div>
             </div>
 
-<div class="mb-3 row">
+            <div class="mb-3 row">
                 <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-controller"></i>&nbsp;Gametracker:<br><small>('. $_language->module[ 'social_sidebar_widget' ] .')</small></label>
 
                 <div class="col-xs-12 col-md-10">
@@ -845,7 +890,7 @@ echo'
                 </div>
             </div>            
 
-<div class="mb-3 row">
+            <div class="mb-3 row">
                 <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-discord"></i>&nbsp;Discord:<br><small>('. $_language->module[ 'social_sidebar_widget' ] .')</small></label>
 
                 <div class="col-xs-12 col-md-10">
@@ -853,103 +898,135 @@ echo'
                     <input type="text" name="discord" class="form-control" value="'.getinput($ds['discord']).'">
                 </div>
             </div>
+        </div>
+    </div>
 
-<hr>
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-twitch"></i>&nbsp;twitch:</label>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header"><i class="bi bi-gear-wide-connected"></i> 
+                        '. $_language->module[ 'title_social_media' ] .'
+                    </div>
+                    <div class="card-body">
 
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="twitch" class="form-control" value="'.getinput($ds['twitch']).'">
-                </div>
-            </div>
-<div class="mb-3 row">            
-            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-steam"></i>&nbsp;steam:</label>
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-twitch"></i>&nbsp;twitch:</label>
 
-            <div class="col-xs-12 col-md-10">
-                
-                <input type="text" name="steam" class="form-control" value="'.getinput($ds['steam']).'">
-            </div>
-        </div>             
+                            <div class="col-xs-12 col-md-10">
+                                    
+                                <input type="text" name="twitch" class="form-control" value="'.getinput($ds['twitch']).'">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">            
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-steam"></i>&nbsp;steam:</label>
 
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-facebook"></i>&nbsp;facebook:</label>
+                            <div class="col-xs-12 col-md-10">
+                                
+                                <input type="text" name="steam" class="form-control" value="'.getinput($ds['steam']).'">
+                            </div>
+                        </div>             
 
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="facebook" class="form-control" value="'.getinput($ds['facebook']).'">
-                </div>
-            </div> 
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-facebook"></i>&nbsp;facebook:</label>
 
- <div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-twitter-x"></i>&nbsp;twitter:</label>
+                            <div class="col-xs-12 col-md-10">
+                                    
+                                <input type="text" name="facebook" class="form-control" value="'.getinput($ds['facebook']).'">
+                            </div>
+                        </div> 
 
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="twitter" class="form-control" value="'.getinput($ds['twitter']).'">
-                </div>
-            </div>
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-twitter-x"></i>&nbsp;twitter:</label>
 
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-youtube"></i>&nbsp;youtube:</label>
+                            <div class="col-xs-12 col-md-10">
+                                    
+                                <input type="text" name="twitter" class="form-control" value="'.getinput($ds['twitter']).'">
+                            </div>
+                        </div>
 
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="youtube" class="form-control" value="'.getinput($ds['youtube']).'">
-                </div>
-            </div>
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-youtube"></i>&nbsp;youtube:</label>
 
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-rss"></i>&nbsp;rss:</label>
-
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="rss" class="form-control" value="'.getinput($ds['rss']).'">
-                </div>
-            </div>
-
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M384 254.7v52.1c-18.4 4.2-36.9 6.1-52.1 6.1-36.9 77.4-103 143.8-125.1 156.2-14 7.9-27.1 8.4-42.7-.8C137 452 34.2 367.7 0 102.7h74.5C93.2 261.8 139 343.4 189.3 404.5c27.9-27.9 54.8-65.1 75.6-106.9-49.8-25.3-80.1-80.9-80.1-145.6 0-65.6 37.7-115.1 102.2-115.1 114.9 0 106.2 127.9 81.6 181.5 0 0-46.4 9.2-63.5-20.5 3.4-11.3 8.2-30.8 8.2-48.5 0-31.3-11.3-46.6-28.4-46.6-18.2 0-30.8 17.1-30.8 50 .1 79.2 59.4 118.7 129.9 101.9z"/></svg>&nbsp;vine:</label>
-
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="vine" class="form-control" value="'.getinput($ds['vine']).'">
+                            <div class="col-xs-12 col-md-10">
+                                
+                                <input type="text" name="youtube" class="form-control" value="'.getinput($ds['youtube']).'">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg></i>&nbsp;flickr:</label>
+            <div class="col-md-6">
 
-                <div class="col-xs-12 col-md-10">
+                <div class="card">
+                    <div class="card-header"><i class="bi bi-gear-wide-connected"></i> 
+                        '. $_language->module[ 'title_social_media' ] .'
+                    </div>
+                    <div class="card-body">
+
+
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-rss"></i>&nbsp;rss:</label>
+
+                            <div class="col-xs-12 col-md-10">
                     
-                    <input type="text" name="flickr" class="form-control" value="'.getinput($ds['flickr']).'">
+                                <input type="text" name="rss" class="form-control" value="'.getinput($ds['rss']).'">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M384 254.7v52.1c-18.4 4.2-36.9 6.1-52.1 6.1-36.9 77.4-103 143.8-125.1 156.2-14 7.9-27.1 8.4-42.7-.8C137 452 34.2 367.7 0 102.7h74.5C93.2 261.8 139 343.4 189.3 404.5c27.9-27.9 54.8-65.1 75.6-106.9-49.8-25.3-80.1-80.9-80.1-145.6 0-65.6 37.7-115.1 102.2-115.1 114.9 0 106.2 127.9 81.6 181.5 0 0-46.4 9.2-63.5-20.5 3.4-11.3 8.2-30.8 8.2-48.5 0-31.3-11.3-46.6-28.4-46.6-18.2 0-30.8 17.1-30.8 50 .1 79.2 59.4 118.7 129.9 101.9z"/></svg>&nbsp;vine:</label>
+
+                            <div class="col-xs-12 col-md-10">
+                    
+                                <input type="text" name="vine" class="form-control" value="'.getinput($ds['vine']).'">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"/></svg></i>&nbsp;flickr:</label>
+
+                            <div class="col-xs-12 col-md-10">
+                    
+                                <input type="text" name="flickr" class="form-control" value="'.getinput($ds['flickr']).'">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-linkedin"></i>&nbsp;linkedin:</label>
+
+                            <div class="col-xs-12 col-md-10">
+                    
+                                <input type="text" name="linkedin" class="form-control" value="'.getinput($ds['linkedin']).'">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-instagram"></i>&nbsp;instagram:</label>
+
+                            <div class="col-xs-12 col-md-10">
+                    
+                                <input type="text" name="instagram" class="form-control" value="'.getinput($ds['instagram']).'">
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
+            <div class="mb-3 row">
+                <div class="col-sm-11"></div>
 
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-linkedin"></i>&nbsp;linkedin:</label>
-
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="linkedin" class="form-control" value="'.getinput($ds['linkedin']).'">
+                <div class="col-sm-11">
+                    <input type="hidden" name="captcha_hash" value="'.$hash .'" />
+                    <input type="hidden" name="socialID" value="'.$ds[ 'socialID' ] .'" />
+					<button class="btn btn-warning" type="submit" name="saveedit"><i class="bi bi-box-arrow-down"></i> ' . $_language->module['update'] . '</button>
                 </div>
             </div>
-
-<div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-2 control-label"><i class="bi bi-instagram"></i>&nbsp;instagram:</label>
-
-                <div class="col-xs-12 col-md-10">
-                    
-                    <input type="text" name="instagram" class="form-control" value="'.getinput($ds['instagram']).'">
-                </div>
-            </div>
-
-<input type="hidden" name="captcha_hash" value="'.$hash .'" />
-                <input type="hidden" name="socialID" value="'.$ds[ 'socialID' ] .'" />
-
-<input class="btn btn-warning" type="submit" name="saveedit" value="'.$_language->module['update'] .'" />
-
-</form></div></div>';
+        </form>
+    </div>
+</div>';
 
 
 }
@@ -974,76 +1051,6 @@ if (isset($_POST[ 'submit_members' ])) {
 
 
 } else {
-
-
-echo'<div class="card">
-        <div class="card-header">
-            '. $_language->module[ 'plugin_settings' ] .'
-            </div>
-            <div class="card-body">';    
-echo'
-    <a href="admincenter.php?site=settings" class="btn btn-primary" type="button">'.$_language->module[ 'settings' ] .'</a>
-    <a href="admincenter.php?site=settings&action=social_setting" class="btn btn-primary" type="button">'.$_language->module[ 'social_settings' ] .'</a>
-    <a href="admincenter.php?site=settings&action=plugin_setting" class="btn btn-primary disabled" type="button">'.$_language->module[ 'plugin_settings' ] .'</a>';
-
-echo'<div class="row">';
-
-
-
-#=========members===============#
-
-
-$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='memberslist'"));
-        if (@$dx[ 'modulname' ] != 'memberslist') {
-        $member = '';
-        } else {
-        $member = 
-
-
-$ergebnis = safe_query("SELECT * FROM `" . PREFIX . "plugins_memberslist`");
-    $ds = mysqli_fetch_array($ergebnis);
-    $CAPCLASS = new \webspell\Captcha;
-    $CAPCLASS->createTransaction();
-    $hash = $CAPCLASS->getHash();
-
-
-    echo '<div class="col-md-6" style="height: 250px">
-    <div class="card">
-        <div class="card-header">
-            '.$_language->module[ 'title_members' ] .'
-        </div>
-            <div class="card-body">
-
-        <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=settings&action=plugin_setting" onsubmit="return chkFormular();">
-<div class="row">
-    <div class="col-md-6">
-            <div class="mb-3 row">
-                <label for="select-squad" class="col-xs-12 col-md-6 control-label">'.$_language->module['max_registered_members'] .'</label>
-
-                <div class="col-xs-12 col-md-3">
-                    <span class="pull text-muted small"><em data-toggle="tooltip" data-html="true" title="'.$_language->module[ 'tooltip_members' ] .'"><input class="form-control" type="text" name="users" value="'.$ds['users'] .'" size="35"></em></span>
-                </div>
-            </div>    
-    </div>
-    <div class="col-md-6">
-                    
-            <img alt="" src="https://www.webspell-rm.de/includes/plugins/pic_update/images/99.jpg" style="width:100%">
-    </div>             
-</div>
-        <input type="hidden" name="captcha_hash" value="'.$hash .'"> <br>
-        <button class="btn btn-warning" type="submit" name="submit_members"  />'.$_language->module['update'] .'</button>
-
-        </form></div></div></div>
-        ';
-
-}
-
-
-
-
-
-
-
 
 }
 

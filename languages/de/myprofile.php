@@ -76,6 +76,7 @@ $language_array = array(
     'privacy_policy'            => 'Datenschutz-Bestimmungen',
     'profile_info'              => 'Profilinformationen',
     'profile_updated'           => '<blockquote>Dein Profil wurde aktualisiert. Du wirst weitergeleitet!</blockquote>',
+    'profile_visibility'        => 'Profil öffentlich sichtbar machen?',
     'pw_changed'                => '<blockquote>Dein Passwort wurde geändert. Du musst dich neu anmelden.</blockquote>',
     'ram'                       => 'RAM',
     'repeat_new_email'          => 'E-Mail Wiederholung',

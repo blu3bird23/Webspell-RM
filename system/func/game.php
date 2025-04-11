@@ -64,7 +64,7 @@ function getsquadname($squadID)
             "SELECT `name` FROM `" . PREFIX . "plugins_squads` WHERE `squadID` = " . (int)$squadID
         )
     );
-    return $ds[ 'name' ];
+    return @$ds[ 'name' ];
 }
 
 function issquadmember($userID, $squadID)

@@ -38,6 +38,8 @@ $_language->readModule('index');
 
 if($loggedin) {
 
+
+
     $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum' AND activate= 1"));
     if (@$dx[ 'modulname' ] != 'forum') {
         $new_forum_posts = '';
@@ -70,14 +72,14 @@ if($loggedin) {
             $icon='<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'no_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-light text-dark mt-0 position-relative">
                     <i class="bi bi-chat"></i></span></a>';
             if(!empty($gv['topics'])) $topic=explode("|", $gv[ 'topics' ]);
-                $calc = count($topic);
+                $calc = count((array)$topic);
                 if(is_array($topic)) {
                     $n=1;
                     foreach($topic as $topics) {
                         if($topics!="") { 
 
                             if($n==1){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'one_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'one_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         1
@@ -85,7 +87,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';
                             }elseif($n==2){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         2
@@ -93,7 +95,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';
                             }elseif($n==3){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         3
@@ -101,7 +103,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';
                             }elseif($n==4){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         4
@@ -109,7 +111,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';
                             }elseif($n==5){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         5
@@ -117,7 +119,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';
                             }elseif($n==6){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         6
@@ -125,7 +127,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';
                             }elseif($n==7){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         7
@@ -133,7 +135,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';
                             }elseif($n==8){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         8
@@ -141,7 +143,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';                            
                             }elseif($n==9){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         9
@@ -149,7 +151,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';    
                             }elseif($n>=10){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0 position-relative">
                                         <i class="bi bi-chat-dots"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         10+
@@ -157,7 +159,7 @@ if($loggedin) {
                                         </span>
                                         </span></a>';    
                             }else{ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'no_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-light text-dark mt-0 position-relative">
+                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'no_forum_post' ].'" href="index.php?site=forum"><span class="badge bg-light text-dark mt-0 position-relative">
                                         <i class="bi bi-chat"></i>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         0
@@ -172,33 +174,14 @@ if($loggedin) {
             }
         }
     }
-       
-	$_SESSION[ 'ws_sessiontest' ] = true;
-    global $userID;
-    $data_array=array();
-    $data_array['$_modulepath'] = substr(MODULE, 0, -1);
-    $data_array['$userID'] = $userID;
-    $data_array['$lang_overview'] = $index_language[ 'overview' ];
-    $data_array['$to_profil'] = $index_language[ 'to_profil' ];
-    $data_array['$lang_user_information'] = $index_language[ 'user_information' ];
-    $data_array['$lang_edit_profile'] = $index_language[ 'edit_profile' ];
 
-    $template = $tpl->loadTemplate("navigation","login_loggedin", $data_array);
-    echo $template;
-
-
-    if(isanyadmin($_SESSION['ws_user'])) {
-
-        $_SESSION[ 'ws_sessiontest' ] = true;
-        $data_array=array();
-        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
-        $data_array['$lang_admincenter'] = $index_language[ 'admincenter' ];
-
-        $template = $tpl->loadTemplate("navigation","login_admin", $data_array);
-        echo $template;
+    if ($getavatar = getavatar($userID)) {
+        $l_avatar = $getavatar;
+    } else {
+        $l_avatar = "noavatar.png";
     }
-
-    $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='messenger' AND activate= 1"));
+           
+	$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='messenger' AND activate= 1"));
     if (@$dx[ 'modulname' ] != 'messenger') {
         $new_forum_posts = '';
         $newmessages = '';
@@ -291,16 +274,34 @@ if($loggedin) {
                             </span></a>';
     	}
     }
+
+    if(isanyadmin($_SESSION['ws_user'])) {
+        $dashboard='<li><a class="dropdown-item" href="admin/admincenter.php" target="_blank">'.$index_language[ 'admincenter' ].'</a></li>';
+    }else{
+        $dashboard='';
+    }
         
+
         $_SESSION[ 'ws_sessiontest' ] = true;
         $data_array=array();
+        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
         $data_array['$icon'] = $icon;
         $data_array['$newmessages'] = $newmessages;
-        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
-        $data_array['$lang_log_off'] = $_language->module[ 'log_off' ];
 
-        $template = $tpl->loadTemplate("navigation","login_log_off", $data_array);
+        $data_array['$userID'] = $userID;
+        $data_array['$l_avatar'] = $l_avatar;
+        $data_array['$nickname'] = getnickname($userID);
+        $data_array['$dashboard'] = $dashboard;
+
+        $data_array['$lang_log_off'] = $_language->module[ 'log_off' ];
+        $data_array['$lang_overview'] = $index_language[ 'overview' ];
+        $data_array['$to_profil'] = $index_language[ 'to_profil' ];
+        $data_array['$lang_user_information'] = $index_language[ 'user_information' ];
+        $data_array['$lang_edit_profile'] = $index_language[ 'edit_profile' ];    
+
+        $template = $tpl->loadTemplate("navigation","login_loggedin", $data_array);
         echo $template;
+    
 
 } else {
 

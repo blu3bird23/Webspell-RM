@@ -80,6 +80,7 @@ $language_array = array(
     'picture_too_big_userpic'  => 'L\'immagine è troppo grande max 230/210px',
     'profile_info'             => 'Informazioni profilo',
     'profile_updated'          => '<blockquote>Il tuo profilo è stato aggiornato. Basta aspettare qualche secondo per essere reindirizzato!</blockquote>',
+    'profile_visibility'       => 'Rendere il proprio profilo visibile pubblicamente?',
     'pw_changed'               => '<blockquote>La password è stata modificata. Devi effettuare nuovamente l\'accesso.</blockquote>',
     'ram'                      => 'RAM',
     'repeat_new_email'         => 'ripetere la nuova E-Mail',

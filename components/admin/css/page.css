@@ -40,7 +40,7 @@ a:focus { outline: none; }
     width: 99,9%;
 }
 .btn, btn:hover {
- padding: 8px;
+ /*padding: 8px;*/
  border-radius: .5rem !important;
  transition: 0.1s;
 }
@@ -846,6 +846,14 @@ blockquote {
   border-top: 0px;
 }
 
+.form-control {
+    font-size: 13px;
+}
+
+.form-select {
+    font-size: 13px;
+}
+
 .form-control:focus {
   color: #212529;
   background-color: #fff;
@@ -859,6 +867,12 @@ blockquote {
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(254, 130, 29, 0.25);
 }
+
+.form-check-input{
+ top: .8rem;
+ scale: 0.8;
+ margin-right: 0.7rem;
+ }
 
 .form-check-input:focus {
   border-color: rgba(254, 130, 29, 1);
@@ -905,6 +919,10 @@ blockquote {
     box-shadow: 0 0 0 0.25rem rgba(254, 130, 29, 0.25);
     border-radius: 0px;            
  
+}
+
+.accordion-button:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fe821d'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
 }
 
 /* Plugin-Manager Widget Screens */

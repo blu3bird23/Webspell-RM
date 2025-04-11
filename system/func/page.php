@@ -103,17 +103,3 @@ function generateBoxFromArray($intro, $class, $errors, $dismissible = false)
     $message .= '</ul>';
     return generateAlert($message, $class, $dismissible);
 }
-
-function generateComponents($components, $type)
-{
-    $return = '';
-    foreach ($components as $component) {
-        if ($type === 'js') {
-            $return .= '<script src="' . $component . '"></script>';
-        } elseif ($type === 'css') {
-            $return .= '<link href="' . $component . '" rel="stylesheet">';
-        }
-    }
-
-    return $return;
-}

@@ -1,17 +1,16 @@
 <?php
 
-$language_array = Array(
+$language_array = array(
 
-  'access_denied'       => 'Accesso Negato',
+  'access_denied'       => 'Accesso negato',
   'lock'                => 'Blocca',
-  'locked_since'        => 'La pagina è bloccata dal',
-  'pagelock'            => 'Blocca il Portale',
-  'page_locked'         => '<b>Portale Bloccato!</b><br>Solo gli Amministratori possono accedere alla Pagina ora.',
-  'page_unlocked'       => '<b>Portale Sbloccato!</b>',
-  'settings'            => 'Settaggi',
-  'transaction_invalid' => 'ID transazione non valida',
+  'locked_since'        => 'La pagina è bloccata da',
+  'pagelock'            => 'Blocca pagina',
+  'page_locked'         => '<b>Pagina bloccata!</b><br>Solo gli amministratori hanno ora accesso alla pagina.',
+  'page_unlocked'       => '<b>Pagina sbloccata!</b>',
+  'settings'            => 'Impostazioni',
+  'transaction_invalid' => 'ID transazione non valido',
   'unlock'              => 'Sblocca',
-  'unlock_page'         => 'Si desidera sbloccare il Portale?',
-  'you_can_use_html'    => 'È possibile utilizzare i tag HTML'
+  'unlock_page'         => 'Vuoi sbloccare la pagina?',
+  'you_can_use_html'    => 'Puoi usare i tag HTML'
 );
-

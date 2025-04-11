@@ -1,9 +1,8 @@
 <?php
 
-$language_array = Array(
+$language_array = array(
 
-   'used_for'         =>'Used for',
-   'special_rank'     =>'Special rank',
-   'no_special_rank'  =>'No special rank'
- );
- 
+  'no_special_rank' => 'No special rank',
+  'special_rank'    => 'Special rank',
+  'used_for'        => 'Used for'
+);

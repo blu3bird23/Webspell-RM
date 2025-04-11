@@ -43,7 +43,7 @@ function rmmodinstall($rubric,$modus,$dir,$id,$getversion){
   if($rubric == 'temp') {
     $plugin = $updateserverurl.'/theme/style-base_v.'.$getversion.'/';
     $pluginlist = $updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
-    $instdir = 'themes';
+    $instdir = 'expansion';
     $contenthead = 'Themefiles';
   } else {
     $plugin = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/';
@@ -236,7 +236,17 @@ function rmmodinstall($rubric,$modus,$dir,$id,$getversion){
     }
   }
   }
-echo "<h4>Installation Done</h4><a class='btn btn-secondary' href='javascript:history.back();reload()'>Go Back</a>";
+echo '<div class="card">
+        <div class="card-header">'.$str.' Installation:</div>
+        <div class="card-body">
+          <div class="alert alert-success">
+            <span class="text-dark fs-5">Installation:</span>
+            <span class="d-block text-dark">Installation completed successfully!<br>Installation erfolgreich abgeschlossen!</span>
+            <br /><br />
+            <a class="btn btn-secondary" href="javascript:history.back();reload()">Go Back</a>
+          </div>
+        </div>
+      </div><br />';
 }
 
 

@@ -22,6 +22,7 @@ $language_array = Array(
   'active_off'                     => 'Disabled',
   'express_setting'                => 'Express Setting',
   'add_template'                   => 'Add Template',
+  'template_logo'                  => 'Template Logo (Template Setting)',
   'banner'                         => 'Banner',
   'banner_to_big'                  => 'Banner is too big',
   'image_too_big'                  => 'Logo is too big',
@@ -102,5 +103,37 @@ $language_array = Array(
   'background_primare'             => 'Primary background color',
   'background_secondar'            => 'Secondary background color',
   'close'                          => 'Close',
+
+
+  'settings_navigation'             => 'Navigation settings',
+  'carousel_size'                   => 'Height of the carousel header',
+  'parallax_size'                   => 'Height of the header',
+  'sticky_size'                     => 'Height of the sticky header',
+  'size_info'                       => 'How high should the header be displayed, aligned with the viewport?<br>(Specifications in vh! Example: 25vh, 50vh, 75vh, 100vh..)',
+
+  'navigation'                      => 'Navigation',
+  'underlined'                      => 'underlined',
+  'underlined_text_1'               => 'Navigation animation options',
+  'underlined_text_2'               => 'Would you like your navigation links to have an animated underline?',
+  'underlined_text_3'               => 'Then activate this function.',
+  'enable_animation'                => 'Activate animation',
+
+  'agency_sticky'                   => 'Agency & Sticky',
+  'agency_sticky_error'             => 'Plugin Carousel not installed, or was not assigned to the template in the plugin manager!',
+
+  'agency'                          => 'Agency',
+  'agency_text_1'                   => 'Here you can activate the agency navigation with a',
+  'agency_text_2'                   => 'Parallax Pic or with a sticky pic.',
+  'carousel_header_active'          => 'Carousel Header active',
+  'parallax_header_active'          => 'Parallax header active',
+  'sticky_header_active'            => 'Sticky header active',
+  'agency_navigation_from'          => 'Agency Navigation off',
+  'agency_aktiv'                    => 'Activate Agency Navigation',
+
+  'sticky'                          => 'Sticky',
+  'sticky_text_1'                   => 'Here you can activate the ticky navigation with a',
+  'sticky_text_2'                   => 'sticky pic.',
+  'sticky_navigation_from'          => 'Sticky Navigation off',
+  'sticky_aktiv'                    => 'Activate Sticky Navigation',
         
 );

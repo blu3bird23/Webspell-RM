@@ -287,38 +287,37 @@ function systeminc($file) {
 
 // -- GLOBAL SETTINGS -- //
 $headlines = '';
-$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'"));
+$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_expansion WHERE active = '1'"));
 @$font_family = $dx[ 'body1' ];
 @$headlines = $dx['headlines'];
 
-$components = array(
-    'css' => array(
-        './components/bootstrap/css/bootstrap.min.css',
-        './components/bootstrap/css/bootstrap-icons.css',
-        './components/scrolltotop/css/scrolltotop.css',
-        './components/datatables/css/jquery.dataTables.min.css',
-        './components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book_output.css',
-        './components/css/styles.css.php',
-        './components/css/animate.css',
-        './components/css/page.css',
-        './components/css/passtrength.css',
-        './components/css/'.$headlines.'',
-        './components/fonts/fonts_'.$font_family.'.css'
-        
-    ),
-    'js' => array(
-        './components/jquery/jquery.min.js',
-        './components/bootstrap/js/bootstrap.bundle.min.js',
-        './components/scrolltotop/js/scrolltotop.js',        
-        './components/datatables/js/jquery.dataTables.js',
-        './components/js/bbcode.js',
-        './components/js/index.js',
-        './components/js/jquery.easing.min.js',
-        './components/js/passtrength.js',
-        './components/js/slick.min.js',
-        './components/js/enchanter.js'
-    )
-);
+    $components = array(
+        'css' => array(
+            './components/bootstrap/css/bootstrap.min.css',
+            './components/bootstrap/css/bootstrap-icons.min.css',
+            './components/scrolltotop/css/scrolltotop.css',
+            './components/datatables/css/jquery.dataTables.min.css',
+            './components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book_output.css',
+            './components/css/styles.css.php',
+            './components/css/animate.css',
+            './components/css/page.css',
+            './components/css/passtrength.css',
+            './components/css/'.$headlines.'',
+            './components/fonts/fonts_'.$font_family.'.css'            
+        ),
+        'js' => array(
+            './components/jquery/jquery.min.js',
+            './components/bootstrap/js/bootstrap.bundle.min.js',
+            './components/scrolltotop/js/scrolltotop.js',        
+            './components/datatables/js/jquery.dataTables.js',
+            './components/js/bbcode.js',
+            './components/js/index.js',
+            './components/js/jquery.easing.min.js',
+            './components/js/passtrength.js',
+            './components/js/slick.min.js',
+            './components/js/enchanter.js'
+        )
+    );
 
 $ds = mysqli_fetch_array(
     safe_query("SELECT * FROM `" . PREFIX . "settings`")
@@ -355,6 +354,11 @@ $admin_name = $ds[ 'adminname' ];
 $admin_email = $ds[ 'adminemail' ];
 $myclantag = $ds[ 'clantag' ];
 $myclanname = $ds[ 'clanname' ];
+
+$keywords = $ds[ 'keywords' ];
+$description = $ds[ 'description'];
+
+
 $sessionduration = $ds[ 'sessionduration' ];
 if (empty($sessionduration)) {
     $sessionduration = 24;
@@ -406,8 +410,8 @@ $new_chmod = 0666;
 $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'"));
 @$logo = $dx[ 'logo' ];
 
-$row = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
-$tmp = mysqli_fetch_assoc(safe_query("SELECT count(themeID) as cnt FROM " . PREFIX . "settings_themes"));
+$row = safe_query("SELECT * FROM " . PREFIX . "settings_expansion WHERE active = '1'");
+$tmp = mysqli_fetch_assoc(safe_query("SELECT count(themeID) as cnt FROM " . PREFIX . "settings_expansion"));
 $anzpartners = $tmp[ 'cnt' ];
 while ($ds = mysqli_fetch_array($row)) {
        $theme_name = $ds['pfad'];

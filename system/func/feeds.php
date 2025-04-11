@@ -36,7 +36,7 @@ function generate_rss2()
     $_language->setLanguage($rss_default_language);
     $_language->readModule('feeds');
     $date = safe_query(
-        "SELECT `date` FROM `" . PREFIX . "plugins_news` WHERE `displayed` = 1  ORDER BY `date` DESC LIMIT 0,1"
+        "SELECT `date` FROM `" . PREFIX . "plugins_news_manager` WHERE `displayed` = 1  ORDER BY `date` DESC LIMIT 0,1"
     );
     if (mysqli_num_rows($date)) {
         $date = mysqli_fetch_assoc($date);
@@ -54,7 +54,7 @@ function generate_rss2()
                         <language>' . $rss_default_language . '-' . $rss_default_language . '</language>
                         <pubDate>' . date('D, d M Y h:i:s O', $updated) . '</pubDate>';
     $db_news = safe_query(
-        "SELECT * FROM `" . PREFIX . "plugins_news` WHERE `displayed` = 1  ORDER BY `date` DESC LIMIT 0,10"
+        "SELECT * FROM `" . PREFIX . "plugins_news_manager` WHERE `displayed` = 1  ORDER BY `date` DESC LIMIT 0,10"
     );
     $any_news = mysqli_num_rows($db_news);
     if ($any_news) {

@@ -1,0 +1,28 @@
+/* unterstrich */
+
+#header.header-underscore{
+    .navbar a,
+    .navbar a:focus {
+        background-image: linear-gradient(rgba(var(--bs-rm-nav-link-hover-color-rgb),1), rgba(var(--bs-rm-nav-link-hover-color-rgb),1));
+        /*↓ height of underline  */
+        background-size: 0% 1px;
+        /* ↓ y position of underline. you can change as 50% to see it. */
+        background-position: 0% 70%;
+        background-repeat: no-repeat;
+        transition: background 0.3s linear;
+    }
+    .navbar a:hover,
+    .navbar .active,
+    .navbar .active:focus,
+    .navbar li:hover>a {
+        background-size: 100% 1px;
+    }
+    .navbar .dropdown ul a {
+        /* ↓ height of underline  */
+        background-size: 0% 2px;
+        /* ↓ y position of underline. you can change as 50% to see it. */
+        background-position: 0% 70%;
+        background-repeat: no-repeat;
+        transition: background 0.3s linear;
+    }
+}

@@ -105,7 +105,7 @@ if($step == '1') {
         $step02 = $_template->loadTemplate('step02', 'content', $data_array);
         echo $step02;
 
-        $filename = '../includes/themes/default/css/stylesheet.css';
+        $filename = '../includes/expansion/default/css/stylesheet.css';
 
         if (file_exists($filename)) {
             $stylesheet = '<div class="alert alert-success text-center" role="alert">'. $_language->module['the_file'] .' "<i>'.$filename.'</i>" '. $_language->module['exists'] .' <i class="bi bi-check-lg"></i></div>';
@@ -125,7 +125,7 @@ if($step == '1') {
         }
 
         $chmodfiles = array(
-            '/includes/themes/default/css/stylesheet.css',
+            '/includes/expansion/default/css/stylesheet.css',
             '/images/avatars',
             '/images/userpics',
             '/includes/plugins',
@@ -447,9 +447,9 @@ if($step == '1') {
             $update_functions[] = "rm_29";
             $update_functions[] = "rm_30";
             $update_functions[] = "rm_31";
-            /*$update_functions[] = "rm_32";
+            $update_functions[] = "rm_32";
             $update_functions[] = "rm_33";
-            $update_functions[] = "rm_34";
+            /*$update_functions[] = "rm_34";
             $update_functions[] = "rm_35";
             $update_functions[] = "rm_36";
             $update_functions[] = "rm_37";

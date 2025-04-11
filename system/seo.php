@@ -1,4 +1,5 @@
 <?php
+
 /**
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  *                  Webspell-RM      /                        /   /                                          *
@@ -26,7 +27,7 @@
  * @copyright       2005-2011 by webspell.org / webspell.info                                                *
  *                                                                                                           *
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
-*/
+ */
 
 function settitle($string)
 {
@@ -119,7 +120,7 @@ function parseWebspellURL($parameters = null)
                     $returned_title[] = array($_language->module['articles']);
                 }
                 break;
-   
+
 
             case 'awards':
                 if (isset($parameters['awardID'])) {
@@ -212,9 +213,10 @@ function parseWebspellURL($parameters = null)
                     );
                     $returned_title[] = array(
                         $get['game'] . ' ' . $_language->module['demo'] . ': ' .
-                        $get['clan1'] . ' ' .
-                        $_language->module['versus'] . ' ' .
-                        $get['clan2']);
+                            $get['clan1'] . ' ' .
+                            $_language->module['versus'] . ' ' .
+                            $get['clan2']
+                    );
                 } else {
                     $returned_title[] = array($_language->module['demos']);
                 }
@@ -556,7 +558,7 @@ function parseWebspellURL($parameters = null)
                 } else {
                     $returned_title[] = array($_language->module['links']);
                 }
-                break;    
+                break;
 
             case 'linkus':
                 $returned_title[] = array($_language->module['linkus']);
@@ -627,10 +629,11 @@ function parseWebspellURL($parameters = null)
                 }
                 $get = mysqli_fetch_array(
                     safe_query(
-                        "SELECT rubric FROM `" . PREFIX . "plugins_news_rubrics` WHERE rubricID=" . (int)$rubricID)
+                        "SELECT rubric FROM `" . PREFIX . "plugins_news_manager_rubrics` WHERE rubricID=" . (int)$rubricID
+                    )
                 );
                 $get2 = mysqli_fetch_array(
-                    safe_query("SELECT headline FROM `" . PREFIX . "plugins_news` WHERE newsID=" . (int)$newsID)
+                    safe_query("SELECT headline FROM `" . PREFIX . "plugins_news_manager` WHERE newsID=" . (int)$newsID)
                 );
                 if ($action == "newscat") {
                     $returned_title[] = array(
@@ -646,15 +649,14 @@ function parseWebspellURL($parameters = null)
 
                     $returned_title[] = array(
                         $get['rubric'],
-                        'index.php?site=news_contents&amp;action=newscat&amp;rubricID=' . $rubricID 
-                        
+                        'index.php?site=news_contents&amp;action=newscat&amp;rubricID=' . $rubricID
+
                     );
                     $returned_title[] = array($get2['headline']);
                     $metadata['keywords'] = \webspell\Tags::getTags('news', $newsID);
                 } else {
                     $returned_title[] = array($_language->module['news']);
                     $returned_title[] = array($get2['headline']);
-                   
                 }
                 break;
 
@@ -736,7 +738,7 @@ function parseWebspellURL($parameters = null)
 
             case 'planning':
                 $returned_title[] = array($_language->module['planning']);
-                break;    
+                break;
 
             case 'squads':
                 if (isset($parameters['squadID'])) {
@@ -774,14 +776,14 @@ function parseWebspellURL($parameters = null)
             case 'usergallery':
                 $returned_title[] = array($_language->module['usergallery']);
                 break;
-# neu Anfang
+            # neu Anfang
             case 'todo':
                 $returned_title[] = array($_language->module['todo']);
                 break;
 
             case 'news_archive':
                 $returned_title[] = array($_language->module['news_archive']);
-                break; 
+                break;
 
             case 'privacy_policy':
                 $returned_title[] = array($_language->module['privacy_policy']);
@@ -789,32 +791,32 @@ function parseWebspellURL($parameters = null)
 
             case 'candidature':
                 $returned_title[] = array($_language->module['candidature']);
-                break; 
+                break;
 
             case 'twitter':
                 $returned_title[] = array($_language->module['twitter']);
-                break; 
+                break;
 
             case 'discord':
                 $returned_title[] = array($_language->module['discord']);
                 break;
-                
+
             case 'portfolio':
                 $returned_title[] = array($_language->module['portfolio']);
                 break;
-                
+
             case 'streams':
                 $returned_title[] = array($_language->module['streams']);
                 break;
-                
+
             case 'server_rules':
                 $returned_title[] = array($_language->module['server_rules']);
-                break; 
-                
+                break;
+
             case 'clan_rules':
                 $returned_title[] = array($_language->module['clan_rules']);
                 break;
-                
+
 
             case 'videos':
                 if (isset($parameters['videoscatID'])) {
@@ -856,7 +858,7 @@ function parseWebspellURL($parameters = null)
                     $returned_title[] = array($_language->module['videos']);
                     #$returned_title[] = array($get2['videoname']);
                 }
-                break; 
+                break;
 
 
             case 'blog':
@@ -867,8 +869,9 @@ function parseWebspellURL($parameters = null)
                 }
                 $get2 = mysqli_fetch_array(
                     safe_query(
-                        "SELECT headline FROM `" . PREFIX . "plugins_blog` WHERE blogID=" . (int)$blogID)
-                    );
+                        "SELECT headline FROM `" . PREFIX . "plugins_blog` WHERE blogID=" . (int)$blogID
+                    )
+                );
                 if ($action == "show") {
                     $get = mysqli_fetch_array(
                         safe_query("SELECT headline FROM `" . PREFIX . "plugins_blog` WHERE blogID=" . (int)$blogID)
@@ -878,7 +881,6 @@ function parseWebspellURL($parameters = null)
                         'index.php?site=blog'
                     );
                     $returned_title[] = array($get['headline']);
-
                 } elseif ($action == "blog") {
                     $returned_title[] = array(
                         $_language->module['blog'],
@@ -906,8 +908,8 @@ function parseWebspellURL($parameters = null)
                     $returned_title[] = array($_language->module['blog']);
                     $returned_title[] = array($_language->module['archive']);
                 }
-                break;              
-# neu ENDE
+                break;
+            # neu ENDE
             case 'whoisonline':
                 $returned_title[] = array($_language->module['whoisonline']);
                 break;

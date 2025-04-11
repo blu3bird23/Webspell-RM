@@ -2,7 +2,7 @@
 global $userID,$_database,$add_database_install,$add_database_insert;
 global $str,$modulname,$info,$navi_name,$admin_file,$activate,$author,$website,$index_link,$hiddenfiles,$version,$path,$widget_link1,$widget_link2,$widget_link3,$widgetname1,$widgetname2,$widgetname3,$head_activated,$content_head_activated,$content_foot_activated,$head_section_activated,$foot_section_activated,$modul_deactivated,$modul_display,$full_activated,$plugin_settings,$plugin_module,$plugin_widget,$widget1,$widget2,$widget3,$mnavID,$navi_link,$catID,$dashnavi_link,$themes_modulname;
 ##### Install für Plugin und Module ###################################################################################################
-$str                     =   "Footer";                      // name of the plugin
+$str                     =   "{[de]}Footer{[en]}Footer{[it]}Piè di pagina";                      // name of the plugin
 $modulname               =   "footer";                      // name to uninstall
 $info                    =   "{[de]}Mit diesem Plugin könnt ihr einen neuen Footer anzeigen lassen.{[en]}With this plugin you can have a new Footer displayed.{[it]}Con questo plugin puoi visualizzare un nuovo piè di pagina.";// description of the plugin
 $navi_name               =   "{[de]}Footer{[en]}Footer{[it]}Piè di pagina";// name of the Webside Navigation / Dashboard Navigation
@@ -43,9 +43,11 @@ $catID                   =   "7";                           // dashboard_navigat
 $dashnavi_link           =   "admin_footer";                // dashboard_navigation link file  (admincenter.php?site==...)
 $themes_modulname        =   "default";
 #######################################################################################################################################
-if(!ispageadmin($userID)) { echo ("Access denied!"); return false; }    
-      
-  echo "<div class='card'><div class='card-header'>$str Database Installation</div><div class='card-body'>";
+if(!ispageadmin($userID)) { echo ("Access denied!"); return false; }
+$translate = new multiLanguage(detectCurrentLanguage());
+$translate->detectLanguages($str);
+$str = $translate->getTextByLanguage($str);   
+echo "<div class='card'><div class='card-header'>$str Database Installation</div><div class='card-body'>";
 #######################################################################################################################################
 
 add_database_install($add_database_install = "CREATE TABLE IF NOT EXISTS`" . PREFIX . "plugins_footer` (

@@ -65,12 +65,17 @@ $language_array = Array(
   'tooltip_61'                    => 'Was soll das SC Demos Modul anzeigen?',
   'tooltip_62'                    => 'Was soll das SC Dateien Modul anzeigen?',
   'tooltip_63'                    => 'Registrierung mit gleicher IP Adresse blockieren?',
-  'tooltip_64'                    => 'Der Name deiner Startseite',
+  'tooltip_64'                    => 'Plugin Name deiner Startseite',
   'tooltip_65'                    => 'Keine Doppelpost im Forum erlaubt ?',
   'tooltip_66'                    => 'Deutsche Sprachauswahl in der Navigation ein/ausblenden',
   'tooltip_67'                    => 'Englische Sprachauswahl in der Navigation ein/ausblenden',
   'tooltip_68'                    => 'Italienische Sprachauswahl in der Navigation ein/ausblenden',
   'tooltip_69'                    => 'Polnische Sprachauswahl in der Navigation ein/ausblenden',
+
+  'tooltip_70'                    => 'Meta Keywords',
+  'tooltip_71'                    => 'Meta Description: 140 bis 160 Zeichen',
+
+  
 
 /*allgemeine einstellung*/
     'access_denied'               => '<h3>Info</h3><div class="alert alert-danger"><span class="sr-only">Error:</span><strong>Zugriff verweigert</strong></div>',
@@ -92,9 +97,13 @@ $language_array = Array(
   'clan_name'                     => 'Clan Name',
   'clan_tag'                      => 'Clan Tag',
 
+  'meta_keywords'                 => 'Meta Keywords',
+  'meta_description'              => 'Meta Description',
+
 /*Frontend (Website) deaktivieren und Startpage wählen */
   'additional_options'            => 'Website deaktivieren',
-  'pagelock'                      => 'Seite sperren',
+  'on_pagelock'                   => 'Seite sperren',
+  'off_pagelock'                  => 'Seite entsperren',
   'startpage'                     => 'Startseite wählen',
   'no_startpage'                  => 'Keine Startpage',
   
@@ -109,6 +118,7 @@ $language_array = Array(
   'failed'                        => '<div class="col-md-12"><div class="alert alert-danger" role="alert">reCaptcha Account Vorgang fehlgeschlagen.</div></div>',
   
 /*captcha*/
+  'captcha-text'                  => 'Hier handelt es sich um die alte Captcha-Abfrage. Sie ist nicht mehr so sicher gegen Bods und Co. Bitte verwendet die neue Google reCaptcha Abfrage!',
   'captcha'                       => 'Captcha',
   'captcha_autodetect'            => 'automatisch',
   'captcha_bgcol'                 => 'Hintergrundfarbe',

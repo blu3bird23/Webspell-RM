@@ -1,4 +1,5 @@
 <?php
+
 /**
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  *                  Webspell-RM      /                        /   /                                          *
@@ -26,96 +27,227 @@
  * @copyright       2005-2011 by webspell.org / webspell.info                                                *
  *                                                                                                           *
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
-*/
+ */
 
-	$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active= 1");
-    $dx = mysqli_fetch_array($ergebnis);
-    
-    #Verhindert einen Fehler wenn kein Template aktiviert ist
-    if (@$dx[ 'active' ] != '1') {
-        
-    } else {
-        $themes_modulname = $dx[ 'modulname' ];
-    }
-	
-class widgets{	
+$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active= 1");
+$dx = mysqli_fetch_array($ergebnis);
 
-	function safe_query($query){
-			include_once("settings.php");
-			return safe_query($query); 
+#Verhindert einen Fehler wenn kein Template aktiviert ist
+if (@$dx['active'] != '1') {
+} else {
+	$themes_modulname = $dx['modulname'];
+}
+
+class widgets
+{
+
+	function safe_query($query)
+	{
+		include_once("settings.php");
+		return safe_query($query);
 	}
-	
+
+	/*private string $_modulname;
+	private string $_widget;
+	private string $_widgetname;*/
+
 	private string $_modulname;
 	private string $_widgetname;
-	
-	private function isComplete($plugin_folder){
+
+	private function isComplete($plugin_folder)
+	{
 		$info = $this->getInfo($plugin_folder);
-		if($this->infoExists("includes/plugins/$plugin_folder") ){
+		if ($this->infoExists("includes/plugins/$plugin_folder")) {
 			return true;
 		}
 		return false;
 	}
-	
-	public function showWidget($name, $curr_widgetname = "", $curr_id = ""){
+
+	public function showWidget($name, $curr_widgetname = "", $curr_modulname = "", $curr_widgetdatei = "", $curr_id = "")
+	{
 		$widgetname = $this->_widgetname;
-		$query = safe_query("SELECT pluginID FROM `" . PREFIX . "settings_plugins` WHERE widgetname1='".$widgetname."'");
-    	$data_array = mysqli_fetch_array($query);
-    	if($data_array) { 
-	    	$plugin = new plugin_manager();
-	  		$plugin->set_debug(DEBUG);
-	  		echo $plugin->plugin_widget1($data_array["pluginID"]);
+		$widgetdatei = $this->_widgetdatei;
+		$modulname = $this->_modulname;
+		$qs_arr = array();
+		parse_str($_SERVER['QUERY_STRING'], $qs_arr);
+
+		$getsite = 'startpage'; #Wird auf der Startseite angezeigt index.php
+		if (isset($qs_arr['site'])) {
+			$getsite = $qs_arr['site'];
 		}
 
-		$widgetname = $this->_widgetname;
-		$query = safe_query("SELECT pluginID FROM `" . PREFIX . "settings_plugins` WHERE widgetname2='".$widgetname."'");
-    	$data_array = mysqli_fetch_array($query);
-    	if($data_array) { 
-	    	$plugin = new plugin_manager();
-	  		$plugin->set_debug(DEBUG);
-	  		echo $plugin->plugin_widget2($data_array["pluginID"]);
-		}
+		if (
+			@$getsite == 'contact'
+			|| @$getsite == 'imprint'
+			|| @$getsite == 'privacy_policy'
+			|| @$getsite == 'profile'
+			|| @$getsite == 'myprofile'
+			|| @$getsite == 'error_404'
+			|| @$getsite == 'report'
+			|| @$getsite == 'static'
+			|| @$getsite == 'loginoverview'
+			|| @$getsite == 'register'
+			|| @$getsite == 'lostpassword'
+			|| @$getsite == 'login'
+			|| @$getsite == 'logout'
+			|| @$getsite == 'footer'
+			|| @$getsite == 'navigation'
+			|| @$getsite == 'topbar'
+			|| @$getsite == 'articles_comments'
+			|| @$getsite == 'blog_comments'
+			|| @$getsite == 'gallery_comments'
+			|| @$getsite == 'news_comments'
+			|| @$getsite == 'news_recomments'
+			|| @$getsite == 'polls_comments'
+			|| @$getsite == 'videos_comments'
+		) {
 
-		$widgetname = $this->_widgetname;
-		$query = safe_query("SELECT pluginID FROM `" . PREFIX . "settings_plugins` WHERE widgetname3='".$widgetname."'");
-    	$data_array = mysqli_fetch_array($query);
-    	if($data_array) { 
-	    	$plugin = new plugin_manager();
-	  		$plugin->set_debug(DEBUG);
-	  		echo $plugin->plugin_widget3($data_array["pluginID"]);
-		}
+			$query = safe_query("SELECT * FROM `" . PREFIX . "settings_plugins_widget_settings` WHERE widgetname='" . $widgetname . "'");
+			$db = mysqli_fetch_array($query);
 
-		return false;
+			if ((array)$db) {
+				$plugin = new plugin_manager();
+				$plugin->set_debug(DEBUG);
+				echo $plugin->plugin_widget($db["id"] ?? '');
+			}
+		} elseif (@$getsite == 'forum_topic') {
+			$query = safe_query("SELECT * FROM `" . PREFIX . "plugins_forum_settings_widgets` WHERE widgetname='" . $widgetname . "'");
+			$db = mysqli_fetch_array($query);
+
+			if ((array)$db) {
+				$plugin = new plugin_manager();
+				$plugin->set_debug(DEBUG);
+				echo $plugin->plugin_widget($db["id"] ?? '');
+			}
+		} else {
+			$query = safe_query("SELECT * FROM `" . PREFIX . "plugins_" . $getsite . "_settings_widgets` WHERE widgetname='" . $widgetname . "'");
+			$db = mysqli_fetch_array($query);
+
+			if ((array)$db) {
+				$plugin = new plugin_manager();
+				$plugin->set_debug(DEBUG);
+				echo $plugin->plugin_widget($db["id"] ?? '');
+			}
+		}
 	}
-		
-	public function registerWidget($position, $template_file = "default_widget_box"){
-		global $themes_modulname;
-		$select_sql = "SELECT position FROM " . PREFIX . "settings_widgets WHERE position LIKE '$position' && themes_modulname='$themes_modulname'";
-		$select_result = $this->safe_query($select_sql);
-		if(!mysqli_num_rows($select_result)>0){
-			#$register_sql = "INSERT INTO ".PREFIX."settings_widgets (position, description) VALUES ('".$position."','".$description."')";
-			#global $themes_modulname;
-			#$register_sql = "INSERT INTO ".PREFIX."settings_widgets (position) VALUES ('".$position."')";
-			#$result = $this->safe_query($register_sql);
-		}else{
+
+
+	public function registerWidget($position, $template_file = "")
+	{
+		$qs_arr = array();
+		parse_str($_SERVER['QUERY_STRING'], $qs_arr);
+		$getsite = 'startpage'; #Wird auf der Startseite angezeigt index.php
+		if (isset($qs_arr['site'])) {
+			$getsite = $qs_arr['site'];
+		}
+
+		if (
+			@$getsite == 'contact'
+			|| @$getsite == 'imprint'
+			|| @$getsite == 'privacy_policy'
+			|| @$getsite == 'profile'
+			|| @$getsite == 'myprofile'
+			|| @$getsite == 'error_404'
+			|| @$getsite == 'report'
+			|| @$getsite == 'static'
+			|| @$getsite == 'loginoverview'
+			|| @$getsite == 'register'
+			|| @$getsite == 'lostpassword'
+			|| @$getsite == 'login'
+			|| @$getsite == 'logout'
+			|| @$getsite == 'footer'
+			|| @$getsite == 'navigation'
+			|| @$getsite == 'topbar'
+			|| @$getsite == 'articles_comments'
+			|| @$getsite == 'blog_comments'
+			|| @$getsite == 'gallery_comments'
+			|| @$getsite == 'news_comments'
+			|| @$getsite == 'news_recomments'
+			|| @$getsite == 'polls_comments'
+			|| @$getsite == 'videos_comments'
+		) {
+
 			global $themes_modulname;
-			$select_all_widgets = "SELECT id, widgetname, modulname, sort FROM " . PREFIX . "settings_widgets WHERE position LIKE '$position' AND widgetname IS NOT NULL && modulname IS NOT NULL && themes_modulname='$themes_modulname' ORDER BY sort ASC";
+			$select_all_widgets = "SELECT * FROM " . PREFIX . "settings_plugins_widget_settings
+			WHERE position LIKE '$position'
+			AND widgetdatei IS NOT NULL 
+			AND modulname IS NOT NULL 
+			AND themes_modulname='$themes_modulname' 
+			ORDER BY sort ASC";
+
 			$result_all_widgets = $this->safe_query($select_all_widgets);
 			$widgets_templates = "<div class='panel-body'>No Widgets added.</div>";
 			$curr_widget_template = false;
-			if(mysqli_num_rows($result_all_widgets)>0){
+			if (mysqli_num_rows($result_all_widgets) > 0) {
 				$widgets_templates = "";
-				while($widget = mysqli_fetch_array($result_all_widgets)){
-					$curr_id 	= $widget['id'];
-					$curr_widgetname 	= $widget['widgetname'];
+				while ($widget = mysqli_fetch_array($result_all_widgets)) {
+					$curr_id			= $widget['id'];
+					$curr_widgetdatei 	= $widget['widgetdatei'];
 					$curr_modulname 	= $widget['modulname'];
+					$curr_widgetname 	= $widget['widgetname'];
 					$this->_widgetname = $curr_widgetname;
-					$this->_modulname = $curr_modulname;
-					$curr_widget_template = $this->showWidget($curr_id, $curr_widgetname, $curr_modulname);					
+					@$this->_widgetdatei = $curr_widgetdatei;
+					@$this->_modulname 	= $curr_modulname;
+					$curr_widget_template = $this->showWidget($curr_id, $curr_modulname, $curr_widgetdatei, $curr_widgetname);
 				}
-			}else{
+			} else {
 				$curr_widget_template = true;
 			}
-		}	
+		} elseif (@$getsite == 'forum_topic') {
+			global $themes_modulname;
+			$select_all_widgets = "SELECT * FROM " . PREFIX . "plugins_forum_settings_widgets
+			WHERE position LIKE '$position'
+			AND widgetdatei IS NOT NULL 
+			AND modulname IS NOT NULL 
+			AND themes_modulname='$themes_modulname' 
+			ORDER BY sort ASC";
+
+			$result_all_widgets = $this->safe_query($select_all_widgets);
+			$widgets_templates = "<div class='panel-body'>No Widgets added.</div>";
+			$curr_widget_template = false;
+			if (mysqli_num_rows($result_all_widgets) > 0) {
+				$widgets_templates = "";
+				while ($widget = mysqli_fetch_array($result_all_widgets)) {
+					$curr_id			= $widget['id'];
+					$curr_widgetdatei 	= $widget['widgetdatei'];
+					$curr_modulname 	= $widget['modulname'];
+					$curr_widgetname 	= $widget['widgetname'];
+					$this->_widgetname = $curr_widgetname;
+					@$this->_widgetdatei = $curr_widgetdatei;
+					@$this->_modulname 	= $curr_modulname;
+					$curr_widget_template = $this->showWidget($curr_id, $curr_modulname, $curr_widgetdatei, $curr_widgetname);
+				}
+			} else {
+				$curr_widget_template = true;
+			}
+		} else {
+
+			global $themes_modulname;
+			$select_all_widgets = "SELECT * FROM " . PREFIX . "plugins_" . $getsite . "_settings_widgets
+			WHERE position LIKE '$position'
+			AND widgetdatei IS NOT NULL 
+			AND modulname IS NOT NULL 
+			AND themes_modulname='$themes_modulname' 
+			ORDER BY sort ASC";
+
+			$result_all_widgets = $this->safe_query($select_all_widgets);
+			$widgets_templates = "<div class='panel-body'>No Widgets added.</div>";
+			$curr_widget_template = false;
+			if (mysqli_num_rows($result_all_widgets) > 0) {
+				$widgets_templates = "";
+				while ($widget = mysqli_fetch_array($result_all_widgets)) {
+					$curr_id			= $widget['id'];
+					$curr_widgetdatei 	= $widget['widgetdatei'];
+					$curr_modulname 	= $widget['modulname'];
+					$curr_widgetname 	= $widget['widgetname'];
+					$this->_widgetname = $curr_widgetname;
+					@$this->_widgetdatei = $curr_widgetdatei;
+					@$this->_modulname 	= $curr_modulname;
+					$curr_widget_template = $this->showWidget($curr_id, $curr_modulname, $curr_widgetdatei, $curr_widgetname);
+				}
+			} else {
+				$curr_widget_template = true;
+			}
+		}
 	}
 }
-?>

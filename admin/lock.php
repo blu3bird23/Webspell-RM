@@ -38,7 +38,7 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 
 echo '<div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-gear"></i> 
             '.$_language->module['settings'].' 
         </div>
             <div class="card-body">
@@ -73,11 +73,12 @@ if (!$closed) {
         $CAPCLASS->createTransaction();
         $hash = $CAPCLASS->getHash();
         if(empty($ds[ 'reason' ])) { $reason = ''; } else { $reason = getinput($ds[ 'reason' ]); }
-        echo '<form method="post" action="admincenter.php?site=lock"><b>' . $_language->module[ 'pagelock' ] .
+        echo '<form method="post" action="admincenter.php?site=lock"><i class="bi bi-lock"></i> <b>' . $_language->module[ 'pagelock' ] .
             '</b><br /><small>' . $_language->module[ 'you_can_use_html' ] . '</small><br /><br />
             <textarea class="ckeditor" id="ckeditor" name="reason" rows="30" cols="" style="width: 100%;">'.$reason.'
             </textarea><br /><br /><input type="hidden" name="captcha_hash" value="' . $hash . '" />
-            <input class="btn btn-danger" type="submit" name="submit" value="' . $_language->module[ 'lock' ] . '" /></form>';
+			<button class="btn btn-danger" type="submit" name="submit"><i class="bi bi-lock"></i> ' . $_language->module['lock'] . '</button>
+			</form>';
     }
 } else {
     if (isset($_POST[ 'submit' ]) != "" && isset($_POST[ 'unlock' ]) && ispageadmin($userID)) {
@@ -101,7 +102,7 @@ if (!$closed) {
     ' . $_language->module[ 'locked_since' ] . '&nbsp;' . date("d.m.Y - H:i", $ds[ 'time' ]) . '.<br /><br />
     <input type="checkbox" name="unlock" /> ' . $_language->module[ 'unlock_page' ] . '<br /><br />
     <input type="hidden" name="captcha_hash" value="' . $hash . '" />
-    <input class="btn btn-success" type="submit" name="submit" value="' . $_language->module[ 'unlock' ] . '" />
+	<button class="btn btn-success" type="submit" name="submit"><i class="bi bi-unlock"></i> ' . $_language->module['unlock'] . '</button>
     </form>
     </div></div>';
     }

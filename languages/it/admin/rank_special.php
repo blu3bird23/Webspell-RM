@@ -1,10 +1,8 @@
 <?php
 
-$language_array = Array(
+$language_array = array(
 
-
-   'used_for'          => 'Usato per',
-   'special_rank'      => 'Rank Speciale',
-   'no_special_rank'   => 'Nessun Rank Speciale'
- );
- 
+    'no_special_rank' => 'Nessun rango speciale',
+    'special_rank'    => 'Rango speciale',
+    'used_for'        => 'Usato per'
+);

@@ -227,8 +227,12 @@ ksort($array);
 
 # Grafik wird nur bedinkt angezeigt / Einstellungen noch nicht möglich
 #$max_x = $size_x / (count($array) - 1);
-$max_x = 22 / (2 - 1);
+#$max_x = $size_x / (2 - 1);
 #end
+// old
+//$max_x = $size_x / (count($array) - 1);
+//new
+$max_x = (int) round($size_x / (count($array) - 1));
 
 for ($i = 0; $i <= $size_y; $i += $size_y / 4) {
     imageline($im, $offset_left, $i + $offset_top, $size_x + $offset_left, $i + $offset_top, IMG_COLOR_STYLED);

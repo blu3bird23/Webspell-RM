@@ -47,6 +47,7 @@ function show_var($var)
     }
 }
 
+#css & js vom template
 function headfiles($var, $path) {
     $css ="";
     $js="\n";
@@ -179,16 +180,17 @@ function js_replace($string)
     return $output;
 }
 
-function percent($sub, $total, $dec)
+function percent($sub, $total, $dec = 2)
 {
-    if ($sub) {
-        $perc = $sub / $total * 100;
-        $perc = round($perc, $dec);
-        return $perc;
-    } else {
-        return 0;
+    // Controlla che $sub e $total siano numerici e che $total non sia zero
+    if (!is_numeric($sub) || !is_numeric($total) || $total == 0) {
+        return 0; // Evita divisioni per zero e valori non numerici
     }
+
+    $perc = ($sub / $total) * 100;
+    return round($perc, $dec);
 }
+
 
 // Wird angezeigt wenn sich die Seite im Wartungsmodus befindet
 function showlock($reason)
@@ -373,7 +375,6 @@ if(file_exists('func/spam.php')) { systeminc('func/spam'); } else { systeminc('.
 // -- Tags -- //
 if(file_exists('func/tags.php')) { systeminc('func/tags'); } else { systeminc('../system/func/tags'); }
 
-
 // -- Upload -- //
 if(file_exists('func/upload.php')) { systeminc('func/upload'); } else { systeminc('../system/func/upload'); }
 
@@ -387,6 +388,9 @@ if(file_exists('modrewrite.php')) { systeminc('modrewrite'); } else { systeminc(
 
 // -- index content  -- //
 if(file_exists('content.php')) { systeminc('content'); } else { systeminc('../system/content'); }
+
+// -- install_base  -- //
+if(file_exists('func/install_base.php')) { systeminc('func/install_base'); } else { systeminc('../system/func/install_base'); }
 
 $GLOBALS['_modRewrite'] = new \webspell\ModRewrite();
 if (!stristr($_SERVER['SCRIPT_NAME'], '/admin/') && $modRewrite) {
@@ -643,5 +647,11 @@ function httpprotokoll($string) {
 function usergrpexists($fgrID)
 {
     return (mysqli_num_rows(safe_query("SELECT `fgrID` FROM `" . PREFIX . "plugins_forum_groups` WHERE `fgrID` = " . (int)$fgrID)) > 0);
+}
+
+// Funzione per gestire se non esiste la tabella delle impostazioni del plugin
+function tableExists($table) {
+    $result = safe_query("SHOW TABLES LIKE '" . $table . "'");
+    return mysqli_num_rows($result) > 0;
 }
 ?>

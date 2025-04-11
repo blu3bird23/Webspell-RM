@@ -56,9 +56,9 @@ if ($action == "add") {
 }
 
 if (isset($_POST[ "saveedit" ])) {
-    //$CAPCLASS = new \webspell\Captcha;
-    //if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
-    
+    $CAPCLASS = new \webspell\Captcha;
+    if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
+
     $about = $_POST[ "about" ];
     $name = $_POST[ "name" ];
     $strasse = $_POST[ "strasse" ];
@@ -127,8 +127,7 @@ if (isset($_POST[ "saveedit" ])) {
     $widgetname_right = $_POST[ "widget_right" ];
     $footID = $_POST[ "footID" ];
     
-   // $CAPCLASS = new \webspell\Captcha;
-   // if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
+    
         
             safe_query(
                 "UPDATE
@@ -220,15 +219,11 @@ if (isset($_POST[ "saveedit" ])) {
                 echo generateErrorBoxFromArray($plugin_language['errors_there'], $errors);
             }
 
-       // }
+        }
 
     echo $plugin_language[ 'success_edit' ]."<br /><br />";   
     redirect("admincenter.php?site=admin_footer", "", 1); return false;  
-//} 
-        echo $plugin_language[ 'transaction_invalid' ]."<br /><br />";   
-        redirect("admincenter.php?site=admin_footer", "", 2); return false;
-    
-} 
+}
 
 if ($action == "") {
         

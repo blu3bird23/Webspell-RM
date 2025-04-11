@@ -41,10 +41,12 @@ if (isset($_POST[ 'save' ])) {
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         if (isset($_POST[ 'staticID' ]) && $_POST[ 'staticID' ]) {
             if (isset($_POST[ "displayed" ])) {
-                $displayed = 'ckeditor';
+                $displayed = '1';
             } else {
-                $displayed = '';
+                $displayed = '0';
             }
+
+            print_r($_POST[ "displayed" ]);
             safe_query(
                 "UPDATE
                     `" . PREFIX . "settings_static`
@@ -61,9 +63,9 @@ if (isset($_POST[ 'save' ])) {
         } else {
 
             if (isset($_POST[ "displayed" ])) {
-                $displayed = 'ckeditor';
+                $displayed = '1';
             } else {
-                $displayed = '';
+                $displayed = '0';
             }
     
 
@@ -194,19 +196,19 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
         $public = "checked=\"checked\"";
     }
 
-    if (isset($_POST[ "displayed" ])) {
-        $displayed = 'ckeditor';
+    if ($ds[ "displayed" ] == '1') {
+        $editor = 'ckeditor';
     } else {
-        $displayed = '';
+        $editor = '1';
     }
 
     $tags = \webspell\Tags::getTags('static', $staticID);
 
 
-    if ($ds[ 'displayed' ] == 'ckeditor') {
-        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="ckeditor" checked="checked" />';
+    if ($ds[ 'displayed' ] == '1') {
+        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="1" checked="checked" />';
     } else {
-        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="ckeditor" />';
+        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="1" />';
     }
 
 
@@ -215,7 +217,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
     $hash = $CAPCLASS->getHash();
 
     $tags = \webspell\Tags::getTags('static', $staticID);
-    $editor = $ds['displayed'];
+    #$editor = $ds['displayed'];
 
      echo '<div class="card">
         <div class="card-header">

@@ -18,9 +18,9 @@
                 <h5>$personal_info</h5>
             </div>
             <div class="col-md-9 col-sm-12 text-end">
-                <a href="index.php?site=myprofile&amp;action=editpwd" class="btn btn-warning btn-sm">$edit_password</a>
-                <a href="index.php?site=myprofile&amp;action=editmail" title="$email" class="btn btn-warning btn-sm">$edit_mail</a>
-                <a href="index.php?site=myprofile&amp;action=deleteaccount" class="btn btn-danger btn-sm">$del_acc</a>
+                <a href="index.php?site=myprofile&amp;action=editpwd" class="btn btn-warning btn-sm"><i class="bi bi-shield-lock"></i> $edit_password</a>
+                <a href="index.php?site=myprofile&amp;action=editmail" title="$email" class="btn btn-info btn-sm"><i class="bi bi-envelope"></i> $edit_mail</a>
+                <a href="index.php?site=myprofile&amp;action=deleteaccount" class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i> $del_acc</a>
             </div>
         </div>  
 
@@ -86,6 +86,10 @@
                             <label for="format-time" class="control-label">$formattime:</label>
                             <select id="format-time" class="form-select form-select-sm" name="time_format">$format_time</select>
                         </div>
+                        <div class="mb-3">
+                            <label for="profile_visibilitye" class="control-label">$profilevisibility:</label>
+                            <select id="profile_visibility" class="form-select form-select-sm" name="profile_visibility">$profile_visibility</select>
+                        </div>
 
                     </div> 
                 </div>   
@@ -120,7 +124,7 @@
                                         <input class="btn btn-info btn-sm form-control" name="avatar" type="file"><br><span class="help-block">$or</span>
                                         <input name="avatar_url" class="form-control form-control-sm" type="text" placeholder="https://" class="form-control">
                                         <span class="help-block">(max: 480px / 480px)</span><br>
-                                        <input name="delavatar" type="checkbox" class="form-check-input" value="1"> $lang_avatar$delete
+                                        <input name="delavatar" type="checkbox" class="form-check-input" value="1"> $lang_avatar $delete
                                             
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
@@ -223,7 +227,7 @@
         <div class="row">
             <div class="col-md-2">
                 <font color="#DD0000">*</font>$fields_star_required<br>
-                <input type="submit" name="submit" value="$update_profile" class="btn btn-success btn-sm">
+                <button type="submit" class="btn btn-success btn-sm" name="submit"><i class="bi bi-save"></i> $update_profile</button>
             </div>
 
             <div class="col-md-10">
@@ -277,7 +281,7 @@
             </div>
             <div class="col-lg-6 text-end">
                 <input type="hidden" name="id" value="$userID">
-                <input type="submit" name="savepwd" value="$change_password" class="btn btn-danger">
+                <button  class="btn btn-danger" type="submit" name="savepwd"><i class="bi bi-shield-lock"></i> $change_password</button>
             </div>
         </div>
         </form>
@@ -322,7 +326,7 @@
             </div>
             <div class="col-lg-6 text-end">
                 <input type="hidden" name="userid" value="$userID">
-                <input type="submit" name="savemail" value="$change_mail" class="btn btn-danger">
+                <button  class="btn btn-danger" type="submit" name="savemail"><i class="bi bi-envelope-check"></i> $change_mail</button>
             </div>
         </div>
         </form>
@@ -351,7 +355,7 @@
             </div>
             <div class="col-lg-6 text-end">
                 <input type="hidden" name="id" value="$userID">
-                <input type="submit" name="deleteAccount" value="$del_acc" class="btn btn-danger">
+                <button class="btn btn-danger" type="submit" name="deleteAccount"><i class="bi bi-trash3"></i> $del_acc</button>
             </div>
             <div class="col-lg-7"></div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-$language_array = Array(
+$language_array = array(
 
    'access_denied'        => 'Accesso negato',
    'allowed_commands'     => '<b>Comandi consentiti:</b> inserisci, modifica tabella, seleziona',
@@ -23,5 +23,5 @@ $language_array = Array(
    'file'                 => 'Nome File',
    'created_by'           => 'Creato da',
    'actions'              => 'Azioni',
-   
+
 );

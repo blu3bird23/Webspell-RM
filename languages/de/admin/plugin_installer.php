@@ -20,6 +20,7 @@ $language_array = Array(
   'read_more'               => 'Mehr lesen',
   'wrote'                   => 'schrieb',
   'delete_info'             => 'Möchten Sie dieses Plugin wirklich entfernen? <br><br>Es werden alle Datenbankeinträge, alle Dateien und Verknüpfungen endgültig gelöscht.',
+  'plus_widgets'            => 'Mitgelieferte Widgets',
   'plus_plugin'             => 'Folgende Plugins werden automatisch mit installiert',
   'reinstall'               => 'Re-Install',
   'plugin_ver'              => 'Verfügbare Plugin Version:',
@@ -30,12 +31,13 @@ $language_array = Array(
   'tooltip_2'               => 'Das Plugin wird deinstalliert',
   'tooltip_3'               => 'Das Plugin wird neu installiert. Alle Datenbank-Einträge bleiben erhalten.',
   'tooltip_4'               => 'Es steht ein Update zur Verfügung. Das Plugin wird neu installiert. Datenbank-Einträge könnten überschrieben oder gelöscht werden. Backup bitte vorher anfertigen.',
-  'tooltip_5'               => 'Das Plugin kann nicht separat installiert. Es ist ein Bestandteil eines Template.',
+  'tooltip_5'               => 'Das Plugin kann nicht separat installiert werden. Es ist ein Bestandteil eines Template.',
   'tooltip_6'               => 'Das Plugin wird installiert und ist für das Default Template automatisch aktiviert. Bei einem anderen Template muss das Plugin im Plugin-Manager dem Template zugewiesen werden.',
   'plugin_installer'        => 'Plugin-Installer:',
   'plugin_installer_update' => 'Plugin-Installer-Update:',
   'plugin_update'           => 'Aktualisiert am',
   'plugin_lang'             => 'Sprachen',
   'close'                   => 'Schließen',
-  'no_ver'                  => '<div class="alert alert-danger" role="alert">Dieses Plugin ist nicht für diese Webspell RM Version gültig!!!</div>'
+  'no_ver'                  => '<div class="alert alert-danger" role="alert">Dieses Plugin ist nicht für diese Webspell RM Version gültig!!!</div>',
+
 );

@@ -29,4 +29,4 @@
 */
 
 # Version: Webspell-RM
-$version = "2.1.4";
+$version = "2.1.6";

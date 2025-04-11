@@ -456,7 +456,7 @@ function isinusergrp($usergrp, $userID)
         "SELECT
                 userID
             FROM
-                " . PREFIX . "plugins_forum_user_forum_groups
+                " . PREFIX . "user_forum_groups
             WHERE
                 `" . $usergrp . "` = 1 AND
                 `userID` = " . (int)$userID

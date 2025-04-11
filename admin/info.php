@@ -337,8 +337,8 @@ if (!$getnew = @file_get_contents($updateserverurl.'/plugin/plugin-base_v.'.$get
         for($plug=1; $plug<=$anz; $plug++) {
           $installedversion = '';
           $translate = new multiLanguage(detectCurrentLanguage());
-          $translate->detectLanguages($result['item'.$plug]['description_de']);
-          $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
+          $translate->detectLanguages($result['item'.$plug]['description']);
+          $result['item'.$plug]['description'] = $translate->getTextByLanguage($result['item'.$plug]['description']);
           $ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_plugins` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
 
             if(mysqli_num_rows($ergebnis) == '1') {
@@ -352,7 +352,7 @@ if (!$getnew = @file_get_contents($updateserverurl.'/plugin/plugin-base_v.'.$get
 
           if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {        
 
-            if($result['item'.$plug.'']['version_final'] == $installedversion) {              
+            if($result['item'.$plug.'']['version'] == $installedversion) {              
                 
             } else {
               $output .='
@@ -368,7 +368,7 @@ if (!$getnew = @file_get_contents($updateserverurl.'/plugin/plugin-base_v.'.$get
                           <span>'.$_language->module['update_plugin'].'</span>
                         </div>
                         <div class="cart-header" style="text-align: center;">
-                          <p style="margin-top: 8px"><i class="bi bi-puzzle" style="font-size: 1rem;"></i> '.$_language->module['plugin_version'].' '.$result['item'.$plug]['version_final'].'</p>
+                          <p style="margin-top: 8px"><i class="bi bi-puzzle" style="font-size: 1rem;"></i> '.$_language->module['plugin_version'].' '.$result['item'.$plug]['version'].'</p>
                         </div>
                       </div>
                     </a>
@@ -418,8 +418,8 @@ if (!$getnew = @file_get_contents($updateserverurl.'/theme/style-base_v.'.$getve
         for($plug=1; $plug<=$anz; $plug++) {
           $installedversion = '';
           $translate = new multiLanguage(detectCurrentLanguage());
-          $translate->detectLanguages($result['item'.$plug]['description_de']);
-          $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
+          $translate->detectLanguages($result['item'.$plug]['description']);
+          $result['item'.$plug]['description'] = $translate->getTextByLanguage($result['item'.$plug]['description']);
           $ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
 
                 if(mysqli_num_rows($ergebnis) == '1') {
@@ -432,7 +432,7 @@ if (!$getnew = @file_get_contents($updateserverurl.'/theme/style-base_v.'.$getve
           include("../system/version.php");
           if(is_dir("../includes/themes/".$result['item'.$plug]['path'])) {
 
-            if($result['item'.$plug.'']['version_final'] === $installedversion) {
+            if($result['item'.$plug.'']['version'] === $installedversion) {
               $input = "test";
             } else {
               $output .='
@@ -449,7 +449,7 @@ if (!$getnew = @file_get_contents($updateserverurl.'/theme/style-base_v.'.$getve
                         <span>'.$_language->module['update_template'].'</span>
                       </div>
                       <div class="cart-header" style="text-align: center;">
-                        <p style="margin-top: 8px"><i class="bi bi-palette" style="font-size: 1rem;"></i> '.$_language->module['update_template'].' '.$result['item'.$plug]['version_final'].'</p>
+                        <p style="margin-top: 8px"><i class="bi bi-palette" style="font-size: 1rem;"></i> '.$_language->module['update_template'].' '.$result['item'.$plug]['version'].'</p>
                       </div>
                     </div>
                   </a>

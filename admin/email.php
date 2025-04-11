@@ -276,9 +276,9 @@ if (isset($_POST[ 'submit' ])) {
         </tr>
         <tr id="tr_auth"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'auth' ] . '</b></td>
-            <td width="35%"><input class="form-check-input" type="checkbox" id="check_auth" name="auth"
+            <td width="35%"><div class="col-md-8 form-check form-switch"><input class="form-check-input" type="checkbox" id="check_auth" name="auth"
                 onchange="javascript:HideFields(this.checked);" onmouseover="showWMTT(\'id2\')"
-                onmouseout="hideWMTT()" value="1" ' . $auth . '/></td>
+                onmouseout="hideWMTT()" value="1" ' . $auth . '/></div></td>
         </tr>
         <tr id="tr_user"' . $show_auth . '>
             <td width="15%"><b>' . $_language->module[ 'user' ] . '</b></td>
@@ -303,9 +303,9 @@ if (isset($_POST[ 'submit' ])) {
         </tr>
         <tr id="tr_html">
             <td width="15%"><b>' . $_language->module[ 'html' ] . '</b></td>
-            <td width="35%"><input class="form-check-input" type="checkbox" id="check_html" name="html"
+            <td width="35%"><div class="col-md-8 form-check form-switch"><input class="form-check-input" type="checkbox" id="check_html" name="html"
                 onmouseover="showWMTT(\'id7\')"
-                onmouseout="hideWMTT()" value="1" ' . $html . '/></td>
+                onmouseout="hideWMTT()" value="1" ' . $html . '/></div></td>
         </tr>
         <tr id="tr_secure"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'secure' ] . '</b></td>

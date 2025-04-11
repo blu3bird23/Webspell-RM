@@ -153,7 +153,7 @@ $db = $ret[ 0 ];
 <div class="col-md-6">
 	<div class="card">
         <div class="card-header">
-            <?php echo $_language->module['serverinfo']; ?>
+            <i class="bi bi-server"></i> <?php echo $_language->module['serverinfo']; ?>
         </div>
             
             <div class="card-body">
@@ -180,7 +180,7 @@ $db = $ret[ 0 ];
 	
 	<div class="card">
         <div class="card-header">
-            GD Graphics Library
+            <i class="bi bi-images"></i> GD Graphics Library
         </div>
             
             <div class="card-body">
@@ -197,7 +197,7 @@ $db = $ret[ 0 ];
 
 	<div class="card">
         <div class="card-header">
-            <?php echo $_language->module['interface']; ?>
+            <i class="bi bi-info-square"></i> <?php echo $_language->module['interface']; ?>
         </div>
             
             <div class="card-body">
@@ -219,7 +219,7 @@ $db = $ret[ 0 ];
 <div class="col-md-12">
 <div class="card">
         <div class="card-header">
-            <?php echo $_language->module['php_settings']; ?>
+            <i class="bi bi-filetype-php"></i> <?php echo $_language->module['php_settings']; ?>
         </div>
             
             <div class="card-body">

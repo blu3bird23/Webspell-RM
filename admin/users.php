@@ -294,7 +294,7 @@ if (isset($_POST[ 'edit' ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_GET[ 'captcha_hash' ])) {
         safe_query("DELETE FROM `" . PREFIX . "user_groups` WHERE usgID='" . $_GET[ 'usgID' ] . "'");
-        safe_query("DELETE FROM `" . PREFIX . "plugins_forum_user_forum_groups` WHERE userID='" . $_GET[ 'userID' ] . "'");
+        safe_query("DELETE FROM `" . PREFIX . "user_forum_groups` WHERE userID='" . $_GET[ 'userID' ] . "'");
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
@@ -872,31 +872,21 @@ echo '<div class="card">
                     }else{
                         echo'<th><center>' . $_language->module['cash' ] . '</center></th>';
                     }
+
                     echo'<th><center>' . $_language->module['gallery' ] . '</center></th>
-                    <th><center>' . $_language->module['super' ] . '</center></th>
-                    <th><center>' . $_language->module['forum_group' ] . '</center></th>
-                    <th style="width: 12%;"><center>' . $_language->module[ 'actions' ] . '</center></th>
+                    <th><center>' . $_language->module['super' ] . '</center></th>';
+
+                    $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
+                    if (@$dx[ 'modulname' ] != 'forum') {
+                    }else{
+                        echo'<th><center>' . $_language->module['forum_group' ] . '</center></th>';
+                    }
+
+                    echo'<th style="width: 12%;"><center>' . $_language->module[ 'actions' ] . '</center></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>';
-
-   /* $result=safe_query("SELECT * FROM `".PREFIX."user_groups` WHERE (
-
-                news='1' 
-                OR news_writer='1' 
-                OR polls='1' 
-                OR forum='1' 
-                OR moderator='1' 
-                OR clanwars='1' 
-                OR feedback='1' 
-                OR user='1' 
-                OR page='1' 
-                OR files='1' 
-                OR cash='1' 
-                OR gallery='1' 
-                OR super='1')");*/
-
 
     $result = safe_query(
         "SELECT
@@ -904,7 +894,7 @@ echo '<div class="card">
         FROM
             " . PREFIX . "user_groups w
         LEFT JOIN
-            " . PREFIX . "plugins_forum_user_forum_groups u
+            " . PREFIX . "user_forum_groups u
             ON
             w.userID = u.userID
         WHERE
@@ -975,18 +965,21 @@ echo '<div class="card">
 
 $id = $ds['userID'];
 
- $usergrp = array();
-    $ergebnis = safe_query("SELECT * FROM " . PREFIX . "plugins_forum_groups");
-    while ($db = mysqli_fetch_array($ergebnis)) {
-        $name = $db[ 'name' ];
-        $fgrID = $db[ 'fgrID' ];
-        if (isinusergrp($fgrID, $id)) {
-            $usergrp[ $fgrID ] = '<font class="text-success">' . $_language->module['on' ] . '</font>';
-        } else {
-            $usergrp[ $fgrID ] = '<i><font class="text-danger">' . $_language->module['off' ] . '</i></font>';
-        }
-    }
-
+        $usergrp = array();
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
+        if (@$dx[ 'modulname' ] != 'forum') {
+        }else{
+            $ergebnis = safe_query("SELECT * FROM " . PREFIX . "plugins_forum_groups");
+            while ($db = mysqli_fetch_array($ergebnis)) {
+                $name = $db[ 'name' ];
+                $fgrID = $db[ 'fgrID' ];
+                if (isinusergrp($fgrID, $id)) {
+                    $usergrp[ $fgrID ] = '<font class="text-success">' . $_language->module['on' ] . '</font>';
+                } else {
+                    $usergrp[ $fgrID ] = '<i><font class="text-danger">' . $_language->module['off' ] . '</i></font>';
+                }
+            }
+        }    
      
         
         echo '<td class="'.$td.'">
@@ -1025,27 +1018,32 @@ $id = $ds['userID'];
             }
             
             echo'<td class="'.$td.'"><center>'.$gallery.'</center></td>
-            <td class="'.$td.'"><center>'.$super.'</center></td>
-            <td class="'.$td.'"><center>';
-
-    $sql = safe_query("SELECT * FROM " . PREFIX . "plugins_forum_groups");
-    
-    $i = 1;
-    while ($df = mysqli_fetch_array($sql)) {
-        $name = $df[ 'name' ];
-        $fgrID = $df[ 'fgrID' ];
-        echo '<div class="row bt"><label class="col-md-8 control-label text-start">' . $name . ':</b></label>
-    <div class="col-md-4">' . $usergrp[ $fgrID ] . '
-    </div>
-    </div>
-    ';
-        
-        $i++;
-    }
-$referer = "admincenter.php?site=users&action=user_rights";
-    echo'</center></td>
+            <td class="'.$td.'"><center>'.$super.'</center></td>';
             
-            <td class="'.$td.'">
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
+        if (@$dx[ 'modulname' ] != 'forum') {
+        }else{
+            echo'<td class="'.$td.'"><center>';
+            $sql = safe_query("SELECT * FROM " . PREFIX . "plugins_forum_groups");
+            
+            $i = 1;
+            while ($df = mysqli_fetch_array($sql)) {
+                $name = $df[ 'name' ];
+                $fgrID = $df[ 'fgrID' ];
+                echo '<div class="row bt"><label class="col-md-8 control-label text-start">' . $name . ':</b></label>
+            <div class="col-md-4">' . $usergrp[ $fgrID ] . '
+            </div>
+            </div>
+            ';
+                
+                $i++;
+            }
+            echo'</center></td>';
+        }
+$referer = "admincenter.php?site=users&action=user_rights";
+    
+            
+            echo'<td class="'.$td.'">
 
             <a type="button" class="btn btn-warning" href="admincenter.php?site=user_rights&amp;action=edit&amp;id='.$ds['userID' ] . '&amp;referer=' . urlencode($referer) . '" type="button">' . $_language->module[ 'edit' ] . '</a>
             

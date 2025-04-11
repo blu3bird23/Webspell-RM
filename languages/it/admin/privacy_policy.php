@@ -1,17 +1,11 @@
 <?php
 
-$language_array = Array(
+$language_array = array(
 
-  'access_denied'        => 'Accesso Negato',
-  'privacy_policy'       => 'Informativa sulla Privacy',
-  'transaction_invalid'  => 'Transazione ID invalida',
-  'update'               => 'Aggiorna',
-  'title'                => 'Informativa sulla Privacy',
-  'you_can_use_html'     => 'Puoi usare i tag HTML'
+  'access_denied'       => 'Accesso negato',
+  'privacy_policy'      => 'Politica sulla privacy',
+  'title'               => 'Politica sulla privacy',
+  'transaction_invalid' => 'ID transazione non valido',
+  'update'              => 'Aggiorna',
+  'you_can_use_html'    => 'Puoi usare i tag HTML'
 );
-
-
-
-
-
-

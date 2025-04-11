@@ -4,13 +4,13 @@ $language_array = array(
 
    'access_denied'       => 'Access denied',
    'title'               => 'Footer',
-   'no_esportfooter'     => 'no footer',
+   'no_esportfooter'     => 'No footer',
    'aboutus'             => 'About us',
    'navigation'          => 'Community',
    'links'               => 'Quick Links',
    'contact'             => 'Contact',
-   '_blank'              => 'new window',
-   '_self'               => 'same window',
+   '_blank'              => 'New window',
+   '_self'               => 'Same window',
    'lang_widget'         => 'Widget Setting',
    'module name'         => 'module name',
    'lang_widget_left'    => 'Widget left',
@@ -41,8 +41,7 @@ $language_array = array(
    'all_footer'          => 'For All Footers',
    'no_plugin'           => 'No Plugin',
    'edit_save'           => 'Save Changes',
-   'success_edit'       => '<div class="alert alert-success" role="alert">Footer updated successfully.</div>',
+   'success_edit'        => '<div class="alert alert-success" role="alert">Footer updated successfully.</div>',
    'transaction_invalid' => '<div class="alert alert-danger" role="alert">Transaction ID invalid</div>'
-   
-    );
+);
 

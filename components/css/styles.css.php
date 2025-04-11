@@ -23,16 +23,22 @@ header('Content-type: text/css');
 
     
 
-    $ergebnis = safe_query("SELECT * FROM ".PREFIX."settings_themes WHERE active = '1'");
+    $ergebnis = safe_query("SELECT * FROM ".PREFIX."settings_expansion WHERE active = '1'");
     $ds = mysqli_fetch_array($ergebnis);
 
-    if(@$ds["background_pic"] == 'background_bg.jpg') {
-        $rm_body_pic = "/includes/themes/".$ds["pfad"]."/images/".$ds["background_pic"]."";
+    if(@$ds["background_pic"] == $ds["pfad"].'_background_bg.jpg') {
+        $rm_body_pic = "/includes/expansion/".$ds["pfad"]."/images/".$ds["background_pic"]."";
         $content_style =  substr($ds["card1"], 4, -1);
     }else{
-        $rm_body_pic = "/includes/themes/default/images/no_background.png";
+        $rm_body_pic = "/includes/expansion/default/images/no_background.png";
         $content_style =  "transparent";
     }
+
+    #if(@$ds["reg_pic"] == $ds["pfad"].'_reg_pic.jpg') {
+        $rm_reg_pic = "/includes/expansion/".$ds["pfad"]."/images/".$ds["reg_pic"]."";
+    #}else{
+    #    $rm_reg_pic = "/includes/expansion/default/images/default_login_bg.jpg";
+    #}
 
 $font_family = $ds["body1"];
 
@@ -73,6 +79,14 @@ $btn_border_radius = $ds["border_radius"];
 
 /*Footer*/
 $rm_foot_bg = substr($ds["foot1"], 4, -1);
+$rm_foot_color = substr($ds["foot6"], 4, -1);
+$rm_foot_color_h3 = substr($ds["foot3"], 4, -1);
+$rm_foot_link = substr($ds["foot5"], 4, -1);
+
+$rm_foot_border_top = substr($ds["foot4"], 4, -1);
+
+
+$rm_foot_cr_color = substr($ds["foot2"], 4, -1);
 
 /*Carousel*/
 $rm_carousel_h1 = substr($ds["carousel1"], 4, -1);
@@ -107,6 +121,7 @@ echo'
   --bs-font-family: '.$font_family.';
   --bs-rm-body-pic: url('.$rm_body_pic.');
   --bs-rm-content-style-bg: '.$content_style.';
+  --bs-rm-reg-pic: url('.$rm_reg_pic.');
 
 /* Links */
   --bs-link-color: '.$link_color.';
@@ -139,7 +154,38 @@ echo'
     --bs-rm-card-inner-border-radius: calc('.$card_border_radius.' - 1px);
 
 /*Footer*/
-    --bs-rm-foot-bg-rgb: '.$rm_foot_bg.';  
+    --bs-rm-foot-bg-rgb: '.$rm_foot_bg.';
+    --bs-rm-foot-color-rgb: '.$rm_foot_color.';
+    --bs-rm-foot-color-h3-rgb: '.$rm_foot_color_h3.';
+    --bs-rm-foot-border-top-rgb: '.$rm_foot_border_top.';
+    --bs-rm-foot-link-rgb: '.$rm_foot_link.';
+
+
+/*Footer Copyright*/
+--bs-rm-foot-cr-color-rgb: '.$rm_foot_cr_color.';
+
+
+/*----------Footer---------------*/
+/*.footer {
+    
+    
+    
+}
+
+.footer h3 {
+   
+    
+}
+
+.copyright {
+     background: '.$ds['foot5'].';
+     
+    
+}
+
+
+
+/*----------Footer---------------*/
 
 /*Login*/
    --bs-login_color-rgb: '.$reg_1.';

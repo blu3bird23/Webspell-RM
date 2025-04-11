@@ -189,19 +189,19 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugin
                 $name = $dc[ 'name' ];
                 $fgrID = $dc[ 'fgrID' ];
                 $abc = safe_query(
-                    "SELECT COUNT(*) as anz FROM " . PREFIX . "plugins_forum_user_forum_groups WHERE userID='" . $id . "'"
+                    "SELECT COUNT(*) as anz FROM " . PREFIX . "user_forum_groups WHERE userID='" . $id . "'"
                 );
                 $row = mysqli_fetch_array($abc);
                 if ($row[ 'anz' ] == 1) {
                     safe_query(
-                        "UPDATE " . PREFIX . "plugins_forum_user_forum_groups
+                        "UPDATE " . PREFIX . "user_forum_groups
                         SET `" . $fgrID . "`='" . isset($_POST[ $fgrID ]) . "'
                         WHERE userID='" . $id . "'"
                     );
                 } else {
                     safe_query(
                         "INSERT INTO
-                            " . PREFIX . "plugins_forum_user_forum_groups (
+                            " . PREFIX . "user_forum_groups (
                                 userID ,
                                 `" . $fgrID . "`
                             )

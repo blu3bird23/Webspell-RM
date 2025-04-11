@@ -1,22 +1,21 @@
 <?php
 
-$language_array = Array(
+$language_array = array(
 
-  'access_denied'       => 'Accesso Negato',
-  'na'                  => 'Non disponibile',
-  'welcome'             => 'Benvenuto',
-  'logout'              => 'Uscita',
-  'back_to_website'     => 'Torna al Sito Web',
-  'cookies'             => 'Accetta i Cookie!!',
-  'cookies2'            => 'Questo sito utilizza i cookie. Se utilizzi questo sito acconsenti all\'utilizzo dei cookie!',
-  'dashboard'           => 'Accesso alla dashboard di Amministrazione.',
-  'signup'              => 'Login!',
-  'welcome2'            => 'Benvenuti in Webspell-RM Dasbord Ver.',
-  'insertmail'          => 'Inserisci il tuo indirizzo email e la password. Verrai quindi indirizzato direttamente alla tua dashboard.',
-  'email_address'       => 'Indirizzo Email',
-  'privacy'             => 'Qui potete scoprire tutto sulla protezione dei dati',
-  'accept'              => 'Accetta',
-  'plugin_not_found'    => 'Plug-in non trovato! Plugin non attivato o non assegnato al modello attivo nel gestore plugin!',
+  'access_denied'     => 'Accesso negato',
+  'na'                => 'Non disponibile',
+  'welcome'           => 'Benvenuto',
+  'logout'            => 'Logout',
+  'back_to_website'   => 'Torna al sito web',
+  'cookies'           => 'Accetta i cookie!!',
+  'cookies2'          => 'Questo sito utilizza i cookie. Utilizzando questo sito web, accetti l\'uso dei cookie!',
+  'dashboard'         => 'Accesso al dashboard di amministrazione.',
+  'signup'            => 'Registrazione!',
+  'welcome2'          => 'Benvenuto nel dashboard di Webspell-RM Ver.',
+  'insertmail'        => 'Inserisci il tuo indirizzo email e la tua password. Verrai quindi reindirizzato direttamente al tuo dashboard.',
+  'email_address'     => 'Indirizzo email',
+  'privacy'           => 'Qui trovi tutte le informazioni sulla privacy',
+  'accept'            => 'Accetta',
+  'plugin_not_found'  => 'Plugin non trovato! Plugin non attivato o non assegnato al template attivo nel Plugin Manager!',
 
 );
-

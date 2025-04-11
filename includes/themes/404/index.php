@@ -94,7 +94,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                       <?php echo $_language->module['info'] ?>
                 </div>
                 <br />
-                      <p><a class="btn btn-warning" href="/admin/admincenter.php?site=settings_templates"><?php echo $_language->module['activate_template'] ?></a></p>
+                      <p><a class="btn btn-warning" href="/admin/admincenter.php?site=settings_themes"><?php echo $_language->module['activate_template'] ?></a></p>
                       <br />
                     </center>
                 </div>

@@ -82,6 +82,7 @@ $language_array = array(
     'picture_too_big_userpic' => 'Picture is to big max 230/210px',
     'profile_info'            => 'Profile-Info',
     'profile_updated'         => 'Your Profile has been updated. Just wait a few seconds to be redirected!',
+    'profile_visibility'      => 'Make your profile visible to the public?',
     'pw_changed'              => 'Your password has been changed. You have to log in again.',
     'ram'                     => 'RAM',
     'repeat_new_email'        => 'Repeat new E-Mail',

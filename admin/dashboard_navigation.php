@@ -24,7 +24,8 @@
  *                                                                                                                                    *
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  */
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $_language->readModule('dashnavi', false, true);
 
@@ -136,7 +137,7 @@ if (isset($_GET[ 'action' ])) {
 
 if ($action == "add") {
     echo '<div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-menu-app"></i> 
             ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
@@ -215,14 +216,14 @@ if ($action == "add") {
   </div>
   <div class="mb-3 row">
     <div class="col-md-offset-2 col-md-10">
-      <input type="hidden" name="captcha_hash" value="' . $hash . '"><input class="btn btn-success" type="submit" name="save" value="' . $_language->module[ 'add_link' ] . '">
+      <input type="hidden" name="captcha_hash" value="' . $hash . '"><button class="btn btn-success" type="submit" name="save"><i class="bi bi-box-arrow-down"></i> ' . $_language->module[ 'add_link' ] . '</button>
     </div>
   </div>
    
           </form></div></div>';
 } elseif ($action == "edit") {
     echo '<div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-menu-app"></i> 
             ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
@@ -314,7 +315,7 @@ if ($action == "add") {
 <div class="mb-3 row">
     <div class="col-md-offset-2 col-md-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="linkID" value="' . $linkID . '">
-      <input class="btn btn-warning" type="submit" name="saveedit" value="' . $_language->module[ 'edit_link' ] . '">
+      <button class="btn btn-warning" type="submit" name="saveedit"><i class="bi bi-box-arrow-down"></i> ' . $_language->module[ 'edit_link' ] . '</button>
     </div>
   </div>
 
@@ -322,7 +323,7 @@ if ($action == "add") {
     </div></div>';
 } elseif ($action == "addcat") {
     echo '<div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-menu-app"></i> 
             ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
@@ -374,7 +375,7 @@ if ($action == "add") {
 <div class="mb-3 row">
     <div class="col-md-offset-2 col-md-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
-      <input class="btn btn-success" type="submit" name="savecat" value="' . $_language->module[ 'add_category' ] . '">
+      <button class="btn btn-success" type="submit" name="savecat"><i class="bi bi-box-arrow-down"></i> ' . $_language->module[ 'add_category' ] . '</button>
     </div>
   </div>
 
@@ -382,7 +383,7 @@ if ($action == "add") {
     </div></div>';
 } elseif ($action == "editcat") {
     echo '<div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-menu-app"></i> 
             ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
@@ -445,13 +446,13 @@ if ($action == "add") {
   <div class="mb-3 row">
     <div class="col-md-offset-2 col-md-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="catID" value="' . $catID . '">
-      <input class="btn btn-warning" type="submit" name="saveeditcat" value="' . $_language->module[ 'edit_category' ] . '">
+      <button class="btn btn-warning" type="submit" name="saveeditcat"><i class="bi bi-box-arrow-down"></i> ' . $_language->module[ 'edit_category' ] . '</button>
     </div>
   </div>
     </form></div></div>';
 } else {
     echo '<div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-menu-app"></i>
             ' . $_language->module[ 'dashnavi' ] . '
         </div>
            <nav aria-label="breadcrumb">
@@ -466,9 +467,9 @@ if ($action == "add") {
     <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
     <div class="col-md-8">
 
-<a class="btn btn-primary" href="admincenter.php?site=dashboard_navigation&amp;action=addcat" class="input">' .
+<a class="btn btn-primary" href="admincenter.php?site=dashboard_navigation&amp;action=addcat" class="input"><i class="bi bi-plus-circle"></i> ' .
         $_language->module[ 'new_category' ] . '</a>
-        <a class="btn btn-primary" href="admincenter.php?site=dashboard_navigation&amp;action=add" class="input">' .
+        <a class="btn btn-primary" href="admincenter.php?site=dashboard_navigation&amp;action=add" class="input"><i class="bi bi-plus-circle"></i> ' .
         $_language->module[ 'new_link' ] . '</a>
     </div>
   </div>';
@@ -512,11 +513,11 @@ if ($action == "add") {
             $sort = $list;
             $catactions =
                 '<a class="btn btn-warning" href="admincenter.php?site=dashboard_navigation&amp;action=editcat&amp;catID=' . $ds[ 'catID' ] .
-                '" class="input">' . $_language->module[ 'edit' ] . '</a>
+                '" class="input"><i class="bi bi-pencil-square"></i> ' . $_language->module[ 'edit' ] . '</a>
                 
                 <!-- Button trigger modal -->
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=dashboard_navigation&amp;delcat=true&amp;catID=' . $ds[ 'catID' ] .
-                '&amp;captcha_hash=' . $hash . '">
+                '&amp;captcha_hash=' . $hash . '"><i class="bi bi-trash3"></i> 
     ' . $_language->module['delete'] . '
     </button>
     <!-- Button trigger modal END-->
@@ -526,14 +527,14 @@ if ($action == "add") {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module[ 'dashnavi' ] . '</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-menu-app"></i> ' . $_language->module[ 'dashnavi' ] . '</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
       </div>
-      <div class="modal-body"><p>' . $_language->module['really_delete_category'] . '</p>
+      <div class="modal-body"><p><i class="bi bi-trash3"></i> ' . $_language->module['really_delete_category'] . '</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
-        <a class="btn btn-danger btn-ok">' . $_language->module['delete'] . '</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> ' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok"><i class="bi bi-trash3"></i> ' . $_language->module['delete'] . '</a>
       </div>
     </div>
   </div>
@@ -607,32 +608,46 @@ if ($action == "add") {
                     <td class="' . $td . '"><small><b>' .
                     $_language->module[ 'admin_' . getinput($db[ 'accesslevel' ]) ] . '</b></small></td>
                     <td class="' . $td . '">
-<a href="admincenter.php?site=dashboard_navigation&amp;action=edit&amp;linkID=' . $db[ 'linkID' ] .'" class="btn btn-warning">' . $_language->module[ 'edit' ] . '</a>
+<a href="admincenter.php?site=dashboard_navigation&amp;action=edit&amp;linkID=' . $db[ 'linkID' ] .'" class="btn btn-warning"><i class="bi bi-pencil-square"></i> ' . $_language->module[ 'edit' ] . '</a>
 
  <!-- Button trigger modal -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=dashboard_navigation&amp;delete=true&amp;linkID=' . $db[ 'linkID' ] . '&amp;captcha_hash=' . $hash . '">
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-link" data-href="admincenter.php?site=dashboard_navigation&delete=true&linkID=' . $db[ 'linkID' ] . '&captcha_hash=' . $hash . '"><i class="bi bi-trash3"></i> 
     ' . $_language->module['delete'] . '
     </button>
+	
+	
     <!-- Button trigger modal END-->
-
+	
+	
      <!-- Modal -->
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirm-delete-link" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module[ 'dashnavi' ] . '</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-menu-app"></i> ' . $_language->module[ 'dashnavi' ] . '</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
       </div>
-      <div class="modal-body"><p>' . $_language->module['really_delete_link'] . '</p>
+      <div class="modal-body"><p><i class="bi bi-trash3"></i> ' . $_language->module['really_delete_link'] . '</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
-        <a class="btn btn-danger btn-ok">' . $_language->module['delete'] . '</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> ' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok"><i class="bi bi-trash3"></i> ' . $_language->module['delete'] . '</a>
       </div>
     </div>
   </div>
 </div>
 <!-- Modal END -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var confirmDeleteModal = document.getElementById("confirm-delete-link");
+    confirmDeleteModal.addEventListener("show.bs.modal", function (event) {
+      var button = event.relatedTarget; // Bottone che ha attivato il modal
+      var href = button.getAttribute("data-href"); // Ottiene il link di eliminazione
+      var deleteButton = confirmDeleteModal.querySelector(".btn-ok");
+      deleteButton.setAttribute("href", href); // Imposta il link corretto nel modal
+    });
+  });
+</script>
 
  </td>
                     <td class="' . $td . '">' . $linklist . '</td>
@@ -647,8 +662,10 @@ if ($action == "add") {
     }
     
     echo '	<tr>
-                <td class="td_head" colspan="6" align="right"><input class="btn btn-primary" type="submit" name="sortieren" value="' .
-        $_language->module[ 'to_sort' ] . '"></td>
+                <td class="td_head" colspan="6" align="right">
+				<button class="btn btn-primary" type="submit" name="sortieren"><i class="bi bi-sort-numeric-up"></i>  ' . $_language->module[ 'to_sort' ] . '</button>
+		
+		</td>
             </tr>
         </table>
     </form></div></div>';

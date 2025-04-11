@@ -102,10 +102,11 @@ try {
             $lo++;
             /* Dropdown */
 
-            $themeergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
-            $db = mysqli_fetch_array($themeergebnis);
+            #$themeergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
+            #$db = mysqli_fetch_array($themeergebnis);
 
-            $rex = safe_query("SELECT * FROM `".PREFIX."navigation_website_sub` WHERE `mnavID`='".$row['mnavID']."' and indropdown = '1' and themes_modulname='".$db['modulname']."' ORDER BY `sort`");
+            #$rex = safe_query("SELECT * FROM `".PREFIX."navigation_website_sub` WHERE `mnavID`='".$row['mnavID']."' and indropdown = '1' and themes_modulname='".$db['modulname']."' ORDER BY `sort`");
+            $rex = safe_query("SELECT * FROM `".PREFIX."navigation_website_sub` WHERE `mnavID`='".$row['mnavID']."' and indropdown = '1' ORDER BY `sort`");
             if(mysqli_num_rows($rex)) {
                 $head = $tpl->loadTemplate("navigation","dd_head", $head_array);
                 echo $head;
@@ -114,11 +115,11 @@ try {
                 echo $sopen;
                 while($rox=mysqli_fetch_array($rex)) {
 
-                $themeergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
-                $db = mysqli_fetch_array($themeergebnis);
+                #$themeergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
+                #$db = mysqli_fetch_array($themeergebnis);
 
-                $ergebnis = safe_query("SELECT * FROM `" . PREFIX . "settings_module` WHERE modulname = '".$rox['modulname']."' and themes_modulname='".$db['modulname']."' and `activate` = '1'");
-                $dx = mysqli_fetch_array($ergebnis);
+                #$ergebnis = safe_query("SELECT * FROM `" . PREFIX . "settings_module` WHERE modulname = '".$rox['modulname']."' and themes_modulname='".$db['modulname']."' and `activate` = '1'");
+                #$dx = mysqli_fetch_array($ergebnis);
 
                     if(!empty(@$rox['indropdown'] == 1) !== false) {
 

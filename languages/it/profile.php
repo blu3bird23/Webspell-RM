@@ -150,7 +150,7 @@ $language_array = array(
     'upcoming_events'          => 'Prossimi eventi',
     'menu'                     => '<hr>Usermenu',
     'squad'                    => 'Team',
-    'you_have_to_be_logged_in' => '<blockquote>Devi essere loggato per visualizzare questa pagina!</blockquote><br><br><a class="btn btn-primary" href="index.php?site=login">REGISTRAZIONE</a> <a class="btn btn-success" href="index.php?site=register">REGISTRATI</a> ',
+    'you_have_to_be_logged_in' => '<blockquote>L\'utente ha bloccato il suo profilo dal pubblico!</blockquote>',
     'logout'                   => 'logout',
     'admin'                    => 'Amministrazione',
     'edit_account'             => 'Edita Account',

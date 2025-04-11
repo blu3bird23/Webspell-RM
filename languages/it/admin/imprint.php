@@ -1,16 +1,14 @@
 <?php
 
-$language_array = Array(
+$language_array = array(
 
-
-  'access_denied'       => 'Accesso Negato',
+  'access_denied'       => 'Accesso negato',
   'automatic'           => 'Automatico',
-  'imprint'             => 'Impronta Editoriale',
-  'title'               => 'Impronta Editoriale',
-  'disclaimer'          => 'Testo della dichiarazione di non responsabilità',
-  'manual'              => 'Manuale (Usare la casella di testo inferiore)',
-  'transaction_invalid' => 'Transazione Invalida',
-  'update'              => 'Aggiornamento',
-  'you_can_use_html'    => 'È possibile utilizzare i tag HTML'
-  
+  'imprint'             => 'Impronta',
+  'title'               => 'Impronta',
+  'disclaimer'          => 'Esclusione di responsabilità',
+  'manual'              => 'Manuale (utilizzare il campo di testo sottostante)',
+  'transaction_invalid' => 'ID transazione non valido',
+  'update'              => 'Aggiorna',
+  'you_can_use_html'    => 'Puoi usare i tag HTML'
 );

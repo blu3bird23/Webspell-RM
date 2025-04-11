@@ -211,6 +211,17 @@ function getregistered($userID)
     return getformatdate($ds['registerdate']);
 }
 
+function getlastlogin($userID)
+{
+    $ds = mysqli_fetch_array(
+        safe_query(
+            "SELECT lastlogin FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID
+        )
+    );
+    if(isset($ds))
+    return getformatdate($ds['lastlogin']);
+}
+
 function usergroupexists($userID)
 {
     return (

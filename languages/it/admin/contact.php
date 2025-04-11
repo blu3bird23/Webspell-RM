@@ -2,24 +2,22 @@
 
 $language_array = Array(
 
-
-  'access_denied'                   => 'Accesso Negato',
-  'actions'                         => 'Azioni',
-  'options'                         => 'Opzioni',
-  'add_contact'                     => 'Aggiungi Contatto',
-  'contact'                         => 'Contatti',
-  'contact_name'                    => 'Nome Contatto',
-  'delete'                          => 'Cancella',
-  'edit'                            => 'Edita',
-  'edit_contact'                    => 'Salva Contatto',
-  'email'                           => 'E-Mail',
-  'information_incomplete'          => 'Mancano alcune informazioni.',
-  'new_contact'                     => 'Nuovo Contatto',
-  'really_delete'                   => 'Davvero eliminare questo contatto?',
-  'sort'                            => 'Ordine',
-  'to_sort'                         => 'Ordina',
-  'delete_info'                     => 'Vuoi veramente rimuovere questo contatto? <br><br>Tutto verrà rimosso in modo permanente.',
-  'transaction_invalid'             => 'Transazione Invalida',
-  'close'                           => 'Annulla',
+    'access_denied'           => 'Accesso negato',
+    'actions'                 => 'Azioni',
+    'add_contact'             => 'Aggiungi contatto',
+    'close'                   => 'Chiudi',
+    'contact'                 => 'Contatti',
+    'contact_name'            => 'Nome contatto',
+    'delete'                  => 'Elimina',
+    'delete_info'             => 'Vuoi davvero eliminare questo contatto? <br><br>Verrà eliminato definitivamente.',
+    'edit'                    => 'Modifica',
+    'edit_contact'            => 'Modifica contatto',
+    'email'                   => 'E-mail',
+    'information_incomplete'  => 'Informazioni incomplete.',
+    'new_contact'             => 'Nuovo contatto',
+    'options'                 => 'Opzioni',
+    'really_delete'           => 'Vuoi davvero eliminare questo contatto?',
+    'sort'                    => 'Ordina',
+    'to_sort'                 => 'Ordinare',
+    'transaction_invalid'     => 'ID transazione non valida'
 );
-

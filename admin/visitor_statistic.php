@@ -112,7 +112,7 @@ echo '
 <div class="row">
 <div class="col-md-6">
 <div class="card">
-        <div class="card-header">
+        <div class="card-header"><i class="bi bi-person-lines-fill"></i> 
             '.$_language->module['visitor'].'
         </div>
             
@@ -131,7 +131,7 @@ echo '
 <div class="col-md-6">
 <div class="card">
         <div class="card-header">
-            '.$_language->module['stats'].'
+            <i class="bi bi-list-ol"></i> '.$_language->module['stats'].'
         </div>
             
             <div class="card-body">
@@ -151,7 +151,7 @@ echo '
 
 echo '<div class="card">
         <div class="card-header">
-            '.$_language->module['visitor_stats_graphics'].'
+            <i class="bi bi-graph-up-arrow"></i> '.$_language->module['visitor_stats_graphics'].'
         </div>
             
             <div class="card-body">';
@@ -327,7 +327,7 @@ if (isset($_SESSION[ 'count_months' ])) {
 
 <div class="col-md-6">
     <div class="card">
-        <div class="card-header" id="last_days_h2">
+        <div class="card-header" id="last_days_h2"><i class="bi bi-graph-up-arrow"></i> 
             <?php echo $_language->module[ 'last' ]; ?> <?php echo $count_days; ?> <?php echo $_language->module[ 'days' ]; ?>
         </div>
             
@@ -338,7 +338,7 @@ if (isset($_SESSION[ 'count_months' ])) {
 
 <div class="col-md-6">
 <div class="card">
-        <div class="card-header" id="last_months_h2">
+        <div class="card-header" id="last_months_h2"><i class="bi bi-graph-up-arrow"></i> 
             <?php echo $_language->module['last']; ?> <?php echo $count_months; ?> <?php echo $_language->module['months']; ?>
         </div>
             

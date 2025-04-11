@@ -17,6 +17,7 @@ $language_array = Array(
    'delete'                           => 'Elimina',
    'edit'                             => 'Modifica',
    'template_edit'                    => 'Modifica Layout',
+   'template_logo'                    => 'Template Logo (Settaggi Template)',
    'actions'                          => 'Azioni',
    'active_on'                        => 'Attivato',
    'active_off'                       => 'Disabilitato',
@@ -102,6 +103,37 @@ $language_array = Array(
    'background_primare'               => 'Colore di sfondo Primario',
    'background_secondar'              => 'Colore di sfondo Secondario',
    'close'                            => 'Annulla',
+
+   'settings_navigation'              => 'Impostazioni di navigazione',
+   'carousel_size'                    => 'Altezza dell\'intestazione del carosello',
+   'parallax_size'                    => 'Altezza intestazione',
+   'sticky_size'                      => 'Altezza dell\'intestazione fissa',
+   'size_info'                        => 'Quanto in alto deve essere visualizzata l\'intestazione, allineata con il viewport?<br>(Informazioni in vh! Esempio: 25vh, 50vh, 75vh, 100vh..)',
+
+   'navigation'                       => 'Navigazione',
+   'underlined'                       => 'Sottolineato',
+   'underlined_text_1'                => 'Opzioni di animazione della navigazione',
+   'underlined_text_2'                => 'Vuoi che i tuoi collegamenti di navigazione abbiano un carattere di sottolineatura animato?',
+   'underlined_text_3'                => 'Allora attiva questa funzione.',
+   'enable_animation'                 => 'Attiva animazione',
+
+   'agency_sticky'                    => "Agenzia e appiccicosità",
+   'agency_sticky_error'              => 'Plugin Carousel non installato o non assegnato al modello nel gestore plugin!',
+
+   'agency'                           => 'Agenzia',
+   'agency_text_1'                    => 'Qui puoi utilizzare la navigazione Agenzia con una',
+   'agency_text_2'                    => 'immagine Parallax con una immagine Fissa.',
+   'carousel_header_active'           => 'Intestazione carosello attiva',
+   'parallax_header_active'           => 'Intestazione parallasse attiva',
+   'sticky_header_active'             => 'Intestazione fissa attiva',
+   'agency_navigation_from'           => 'Navigazione Agenzia disattivata',
+   'agency_aktiv'                     => 'Attiva la navigazione Agenzia',
+
+   'sticky'                           => 'Fissa',
+   'sticky_text_1'                    => 'Qui puoi utilizzare la navigazione Fissa con una',
+   'sticky_text_2'                    => 'immagine Fissa.',
+   'sticky_navigation_from'           => 'Navigazione Fissa disattivata',
+   'sticky_aktiv'                     => 'Attiva la navigazione fissa',
    
 );
 
