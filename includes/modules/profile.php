@@ -46,9 +46,14 @@ if (isset($_GET['action'])) {
 #Profile visibility
 $pq = mysqli_fetch_array(safe_query("SELECT profile_visibility FROM " . PREFIX . "user WHERE userID='" . $id . "'"));
 
-if ($pq['profile_visibility'] == '0' && $userID != $id) {
-    redirect('index.php', $_language->module['you_have_to_be_logged_in'], 3);
-} else {
+if($pq['profile_visibility'] == '2' && !$loggedin){
+        redirect('index.php',$_language->module[ 'you_have_to_be_logged_in'], 3);
+}
+elseif($pq['profile_visibility'] == '0' && $userID != $id){
+    redirect('index.php',$_language->module[ 'you_have_to_be_logged_in'], 3);
+}
+else {
+
     if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
 
         if (isbanned($id)) {

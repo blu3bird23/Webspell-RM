@@ -74,6 +74,7 @@ $language_array = array(
     'old_pw_not_valid'         => 'la vecchia password non è valida!',
     'options'                  => 'Opzioni',
     'or'                       => 'o',
+    'only_registered_users'    => 'Solo per utenti registrati',
     'password'                 => 'Password',
     'personal_info'            => 'Informazioni personali',
     'picture_too_big_avatar'   => 'L\'immagine è troppo grande max 90/90px',

@@ -649,6 +649,17 @@ if (!$userID) {
                     '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
             };
 
+            if ($ds['profile_visibility'] == "1") {
+                $profile_visibility = '<option value="1" selected="selected">' . $_language->module['yes'] .
+                    '</option><option value="2">' . $_language->module['only_registered_users'] . '</option><option value="0">' . $_language->module['no'] . '</option>';
+            } elseif($ds['profile_visibility'] == "2") {
+                $profile_visibility = '<option value="1">' . $_language->module['yes'] .
+                    '</option><option value="2" selected="selected">' . $_language->module['only_registered_users'] . '</option><option value="0">' . $_language->module['no'] . '</option>';
+            } else {
+                $profile_visibility = '<option value="1">' . $_language->module['yes'] .
+                    '</option><option value="2">' . $_language->module['only_registered_users'] . '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
+            };
+
             $birthday = date("Y-m-d", strtotime($ds['birthday']));
 
             if (!empty($ds['userpic'])) {
